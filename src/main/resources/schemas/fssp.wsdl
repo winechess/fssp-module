@@ -1,0 +1,187 @@
+<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" 
+                  xmlns:cpxmlsec="urn:ietf:params:xml:ns:cpxmlsec" 
+                  xmlns:dx="http://www.red-soft.biz/ncore/dx/1.1" 
+                  xmlns:sc="http://schemas.sun.com/2006/03/wss/server" 
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+                  xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" 
+                  xmlns:tns="http://www.red-soft.biz/ncore/dx/1.1/smev25/ws" 
+                  xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" 
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+                  xmlns:wsp="http://www.w3.org/ns/ws-policy" 
+                  xmlns:wspp="http://java.sun.com/xml/ns/wsit/policy" 
+                  xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" 
+                  name="NCoreDxSmev25Service" 
+                  targetNamespace="http://www.red-soft.biz/ncore/dx/1.1/smev25/ws">
+    
+    <wsdl:documentation>Веб-сервис NCORE DX/1.1 (СМЭВ версии 2.5)</wsdl:documentation>
+    <wsp:Policy wsu:Id="DxPolicy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:AsymmetricBinding>
+                    <wsp:Policy>
+                        <sp:InitiatorToken>
+                            <wsp:Policy>
+                                <sp:X509Token sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/Always">
+                                    <wsp:Policy>
+                                        <sp:RequireThumbprintReference/>
+                                    </wsp:Policy>
+                                </sp:X509Token>
+                            </wsp:Policy>
+                        </sp:InitiatorToken>
+                        <sp:RecipientToken>
+                            <wsp:Policy>
+                                <sp:X509Token sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/Always">
+                                    <wsp:Policy>
+                                        <sp:RequireThumbprintReference/>
+                                    </wsp:Policy>
+                                </sp:X509Token>
+                            </wsp:Policy>
+                        </sp:RecipientToken>
+                        <sp:AlgorithmSuite>
+                            <wsp:Policy>
+                                <cpxmlsec:BasicGost/>
+                            </wsp:Policy>
+                        </sp:AlgorithmSuite>
+                        <sp:Layout>
+                            <wsp:Policy>
+                                <sp:Strict/>
+                            </wsp:Policy>
+                        </sp:Layout>
+                        <!-- 
+                       <sp:IncludeTimestamp/>
+                        -->
+                        <sp:OnlySignEntireHeadersAndBody/>
+                    </wsp:Policy>
+                </sp:AsymmetricBinding>
+                <sp:SignedParts>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <!--    <wsdl:types xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:schema xmlns:smev25="http://smev.gosuslugi.ru/rev120315" targetNamespace="http://www.red-soft.biz/ncore/dx/1.1/smev25/ws">
+            <xs:import namespace="http://smev.gosuslugi.ru/rev120315" schemaLocation="http://murom.red-soft.biz:8090/fssp-mvv/smev25/1.1?xsd=10"/>
+            <xs:import namespace="http://www.red-soft.biz/schemas/fssp/common/2011/0.5" schemaLocation="http://murom.red-soft.biz:8090/fssp-mvv/smev25/1.1?xsd=3"/>
+            <xs:import namespace="http://www.red-soft.biz/schemas/fssp/common/2011/0.5" schemaLocation="http://murom.red-soft.biz:8090/fssp-mvv/smev25/1.1?xsd=1"/>
+            <xs:import namespace="http://www.red-soft.biz/schemas/fssp/common/2011/0.5" schemaLocation="http://murom.red-soft.biz:8090/fssp-mvv/smev25/1.1?xsd=2"/>
+            <xs:import namespace="http://www.red-soft.biz/schemas/fssp/common/2011/0.5" schemaLocation="http://murom.red-soft.biz:8090/fssp-mvv/smev25/1.1?xsd=4"/>
+            <xs:import namespace="http://www.red-soft.biz/schemas/fssp/common/2011/0.5" schemaLocation="http://murom.red-soft.biz:8090/fssp-mvv/smev25/1.1?xsd=5"/>
+            <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="http://murom.red-soft.biz:8090/fssp-mvv/smev25/1.1?xsd=11"/>
+            <xs:import namespace="http://www.red-soft.biz/ncore/dx/1.1" schemaLocation="http://murom.red-soft.biz:8090/fssp-mvv/smev25/1.1?xsd=8"/>
+            <xs:element name="DXSmev" type="smev25:BaseMessageType"/>
+            <xs:element name="PutDocument" type="smev25:BaseMessageType"/>
+            <xs:element name="DocumentResult" type="smev25:BaseMessageType"/>
+            <xs:element name="GetDocumentResult" type="smev25:BaseMessageType"/>
+        </xs:schema>
+        <xs:schema targetNamespace="http://www.red-soft.biz/ncore/dx/1.1">
+            <xs:include schemaLocation="http://murom.red-soft.biz:8090/fssp-mvv/smev25/1.1?xsd=7"/>
+            <xs:element name="DXBox" type="dx:DXBox"/>
+            <xs:element name="DXError" type="dx:MessageEx"/>
+        </xs:schema>
+    </wsdl:types>-->
+    <wsdl:types xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:schema xmlns:smev25="http://smev.gosuslugi.ru/rev120315" targetNamespace="http://www.red-soft.biz/ncore/dx/1.1/smev25/ws">
+            <xs:import namespace="http://smev.gosuslugi.ru/rev120315" schemaLocation="http://10.11.32.135:9012/gateway/services/SID0003127/P1024875728/OwsmImport.xsd"/>
+            <xs:import namespace="http://www.red-soft.biz/schemas/fssp/common/2011/0.5" schemaLocation="http://10.11.32.135:9012/gateway/services/SID0003127/P1648639158/OwsmImport.xsd"/>
+            <xs:import namespace="http://www.red-soft.biz/schemas/fssp/common/2011/0.5" schemaLocation="http://10.11.32.135:9012/gateway/services/SID0003127/N369043203/OwsmImport.xsd"/>
+            <xs:import namespace="http://www.red-soft.biz/schemas/fssp/common/2011/0.5" schemaLocation="http://10.11.32.135:9012/gateway/services/SID0003127/N1015380203/OwsmImport.xsd"/>
+            <xs:import namespace="http://www.red-soft.biz/schemas/fssp/common/2011/0.5" schemaLocation="http://10.11.32.135:9012/gateway/services/SID0003127/P1276872562/OwsmImport.xsd"/>
+            <xs:import namespace="http://www.red-soft.biz/schemas/fssp/common/2011/0.5" schemaLocation="http://10.11.32.135:9012/gateway/services/SID0003127/P877271506/OwsmImport.xsd"/>
+            <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="http://10.11.32.135:9012/gateway/services/SID0003127/P1432600376/OwsmImport.xsd"/>
+            <xs:import namespace="http://www.red-soft.biz/ncore/dx/1.1" schemaLocation="http://10.11.32.135:9012/gateway/services/SID0003127/N1270881775/OwsmImport.xsd"/>
+            <xs:element name="DXSmev" type="smev25:BaseMessageType"/>
+            <xs:element name="PutDocument" type="smev25:BaseMessageType"/>
+            <xs:element name="DocumentResult" type="smev25:BaseMessageType"/>
+            <xs:element name="GetDocumentResult" type="smev25:BaseMessageType"/>
+        </xs:schema>
+        <xs:schema targetNamespace="http://www.red-soft.biz/ncore/dx/1.1">
+            <xs:include schemaLocation="http://10.11.32.135:9012/gateway/services/SID0003127/N542761089/OwsmImport.xsd"/>
+            <xs:element name="DXBox" type="dx:DXBox"/>
+            <xs:element name="DXError" type="dx:MessageEx"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="DXSmev">
+        <wsdl:part element="tns:DXSmev" name="DXSmev"/>
+    </wsdl:message>
+    <wsdl:message name="PutDocument">
+        <wsdl:part element="tns:PutDocument" name="PutDocument"/>
+    </wsdl:message>
+    <wsdl:message name="DocumentResult">
+        <wsdl:part element="tns:DocumentResult" name="DocumentResult"/>
+    </wsdl:message>
+    <wsdl:message name="GetDocumentResult">
+        <wsdl:part element="tns:GetDocumentResult" name="GetDocumentResult"/>
+    </wsdl:message>
+    <wsdl:message name="Error">
+        <wsdl:part element="dx:DXError" name="detail"/>
+    </wsdl:message>
+    <wsdl:portType name="NCoreDxSmev25Port">
+        <wsdl:operation name="Dx">
+            <wsdl:input message="tns:DXSmev" wsaw:Action="http://www.red-soft.biz/ncore/dx/1.1/smev25/ws/NCoreDxSmev25Port/DxRequest"/>
+            <wsdl:output message="tns:DXSmev" wsaw:Action="http://www.red-soft.biz/ncore/dx/1.1/smev25/ws/NCoreDxSmev25Port/DxAnswer"/>
+            <wsdl:fault message="tns:Error" name="SystemError" wsaw:Action="http://www.red-soft.biz/ncore/dx/1.1/smev25/ws/NCoreDxSmev25Port/Error"/>
+        </wsdl:operation>
+        <wsdl:operation name="PutDocument">
+            <wsdl:input message="tns:PutDocument" wsaw:Action="http://www.red-soft.biz/ncore/dx/1.1/smev25/ws/NCoreDxSmev25Port/PutDocument"/>
+            <wsdl:output message="tns:DocumentResult" wsaw:Action="http://www.red-soft.biz/ncore/dx/1.1/smev25/ws/NCoreDxSmev25Port/DocumentResult"/>
+            <wsdl:fault message="tns:Error" name="SystemError" wsaw:Action="http://www.red-soft.biz/ncore/dx/1.1/smev25/ws/NCoreDxSmev25Port/PutDocumentError"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetDocumentResult">
+            <wsdl:input message="tns:GetDocumentResult" wsaw:Action="http://www.red-soft.biz/ncore/dx/1.1/smev25/ws/NCoreDxSmev25Port/GetDocumentResult"/>
+            <wsdl:output message="tns:DocumentResult" wsaw:Action="http://www.red-soft.biz/ncore/dx/1.1/smev25/ws/NCoreDxSmev25Port/DocumentResult"/>
+            <wsdl:fault message="tns:Error" name="SystemError" wsaw:Action="http://www.red-soft.biz/ncore/dx/1.1/smev25/ws/NCoreDxSmev25Port/GetDocumentResultError"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="NCoreDxSmev25Binding" type="tns:NCoreDxSmev25Port">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <!--<wsp:PolicyReference URI="#DxPolicy"/>-->
+        <wsdl:operation name="Dx">
+            <soap:operation soapAction="http://www.red-soft.biz/ncore/dx/1.1/smev25/ws/NCoreDxSmev25Port/Dx" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="SystemError">
+                <soap:fault name="SystemError" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="PutDocument">
+            <soap:operation soapAction="http://www.red-soft.biz/ncore/dx/1.1/smev25/ws/NCoreDxSmev25Port/PutDocument" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="SystemError">
+                <soap:fault name="SystemError" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="GetDocumentResult">
+            <soap:operation soapAction="http://www.red-soft.biz/ncore/dx/1.1/smev25/ws/NCoreDxSmev25Port/GetDocumentResult" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="SystemError">
+                <soap:fault name="SystemError" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="NCoreDxSmev25Service">
+        <wsdl:port binding="tns:NCoreDxSmev25Binding" name="NCoreDxSmev25Port">
+            <!--<soap:address location="http://murom.red-soft.biz:8090/fssp-mvv/smev25/1.1"/>-->
+           <soap:address location="http://10.11.32.135:9012/gateway/services/SID0003127"/>
+            <!--
+            wsa10:EndpointReference>
+                    <wsa10:Address>http://localhost:8080/</wsa10:Address>
+                  </wsa10:EndpointReference
+            -->
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

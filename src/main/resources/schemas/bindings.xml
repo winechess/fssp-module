@@ -1,0 +1,28 @@
+<bindings xmlns="http://java.sun.com/xml/ns/jaxb"
+          xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+          extensionBindingPrefixes="xjc" version="2.1">
+    <globalBindings>
+
+        <xjc:javaType name="org.joda.time.DateTime"
+                      xmlType="xs:dateTime"
+                      adapter="com.impulsm.adapters.JodaDateTimeAdapter"
+                />
+
+        <xjc:javaType name="org.joda.time.LocalDate"
+                      xmlType="xs:date"
+                      adapter="com.impulsm.adapters.JodaDateAdapter"
+                />
+
+        <xjc:javaType name="org.joda.time.LocalTime"
+                      xmlType="xs:time"
+                      adapter="com.impulsm.adapters.JodaTimeAdapter"
+                />
+
+        <xjc:javaType name="org.joda.time.LocalDate"
+                      xmlType="xs:gYear"
+                      adapter="com.impulsm.adapters.JodaYearAdapter"
+
+                />
+    </globalBindings>
+</bindings>

@@ -1,0 +1,1985 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://www.red-soft.biz/schemaDef/ncore/xsd_extension/version_0.5" xmlns:ns3="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://www.fssprus.ru/namespace/id/2013/3" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:fssp="http://www.fssprus.ru/namespace/id/2013/3">
+    <xs:simpleType name="DDocnumberType">
+        <xs:annotation>
+            <xs:documentation>Строка длиной не более 25 символов</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="40"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DClobType">
+        <xs:annotation>
+            <xs:documentation>Строковые данные переменной длины</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    <xs:simpleType name="DVarchar255Type">
+        <xs:annotation>
+            <xs:documentation>Строка длиной не более 255 символов</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DVarchar2000Type">
+        <xs:annotation>
+            <xs:documentation>Строка длиной не более 2000 символов</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="2000"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DOkoguType">
+        <xs:annotation>
+            <xs:documentation>Строка длиной 7 символов, содержащая только цифры</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="7"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DNumeric15Type">
+        <xs:annotation>
+            <xs:documentation>Действительное целое число с длиной до 15 разрядов</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DOkpdtrType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DIdType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DMoneyType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="15"/>
+            <xs:fractionDigits value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DPositiveIntegerType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <xs:maxInclusive value="2147483647"/>
+            <xs:minInclusive value="-2147483648"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DVarchar1000Type">
+        <xs:annotation>
+            <xs:documentation>Строка длиной не более 1000 символов</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="1000"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DCaptionType">
+        <xs:annotation>
+            <xs:documentation>Строка длиной не более 80 символов</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="80"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DAddrType">
+        <xs:annotation>
+            <xs:documentation>Строка длиной не более 200 символов</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="200"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DDescriptionType">
+        <xs:annotation>
+            <xs:documentation>Строка длиной не более 1000 символов</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="1000"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DDaysCountSumType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <xs:maxInclusive value="32767"/>
+            <xs:minInclusive value="-32768"/>
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation>До окончания срока выплаты</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation>Пожизненно</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DBarcodeType">
+        <xs:annotation>
+            <xs:documentation>Строка длиной не более 100 символов</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DBooleanType">
+        <xs:annotation>
+            <xs:documentation>Логический тип данных, принимает значение true (правда) или false (ложь)</xs:documentation>
+        </xs:annotation>
+        <xs:restriction xmlns="" base="xs:boolean"/>
+    </xs:simpleType>
+    <xs:simpleType name="DNumiric3Type">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DDateType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:date"/>
+    </xs:simpleType>
+    <xs:simpleType name="DBirthyearType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <xs:maxInclusive value="2147483647"/>
+            <xs:minInclusive value="-2147483648"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DOkatoType">
+        <xs:annotation>
+            <xs:documentation>Строка длиной не более 11 символов</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="11"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DInnType">
+        <xs:annotation>
+            <xs:documentation>Строка длиной не более 12 символов</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="12"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DKppType">
+        <xs:annotation>
+            <xs:documentation>Строка длиной не более 9 символов</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="9"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DVarchar9Type">
+        <xs:annotation>
+            <xs:documentation>Строка длиной не более 9 символов</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="9"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DVarchar2Type">
+        <xs:annotation>
+            <xs:documentation>Строка длиной не более 2 символов</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DVarchar25Type">
+        <xs:annotation>
+            <xs:documentation>Строка длиной не более 25 символов</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="25"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DVarchar50Type">
+        <xs:annotation>
+            <xs:documentation>Строка длиной не более 50 символов</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DYearType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <xs:maxInclusive value="2147483647"/>
+            <xs:minInclusive value="-2147483648"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DVarchar10Type">
+        <xs:annotation>
+            <xs:documentation>Строка длиной не более 10 символов</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="10"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DVarchar20Type">
+        <xs:annotation>
+            <xs:documentation>Строка длиной не более 20 символов</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DBikType">
+        <xs:annotation>
+            <xs:documentation>Строка длиной не более 9 символов</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="9"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DVarchar35Type">
+        <xs:annotation>
+            <xs:documentation>Строка длиной не более 35 символов</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="35"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DVarchar100Type">
+        <xs:annotation>
+            <xs:documentation>Строка длиной не более 100 символов</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DOgrnType">
+        <xs:annotation>
+            <xs:documentation>Строка длиной не более 15 символов</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="15"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DExternalKeyType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="60"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DIntegerType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <xs:maxInclusive value="2147483647"/>
+            <xs:minInclusive value="-2147483648"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DAppealPeriodType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="1"/>
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation>день</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation>месяц</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="3">
+                <xs:annotation>
+                    <xs:documentation>год</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DSnilsType">
+        <xs:annotation>
+            <xs:documentation>СНИЛС</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="14"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DVarchar150Type">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="150"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DGenderType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="1"/>
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation>Мужской</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation>Женский</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DVarchar8Type">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="8"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DContrTypeType">
+        <xs:annotation>
+            <xs:documentation>Наименование типов контрагентов</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="250"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DFilenameType">
+        <xs:annotation>
+            <xs:documentation>Строка длиной не более 255 символов</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DContentTypeType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <xs:maxInclusive value="8388607"/>
+            <xs:minInclusive value="-8388608"/>
+            <xs:enumeration value="0">
+                <xs:annotation>
+                    <xs:documentation>XML</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation>ODT</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="10">
+                <xs:annotation>
+                    <xs:documentation>JPEG</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="101">
+                <xs:annotation>
+                    <xs:documentation>RPLBIN</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="11">
+                <xs:annotation>
+                    <xs:documentation>GIF</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="12">
+                <xs:annotation>
+                    <xs:documentation>PNG</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation>PDF</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="200">
+                <xs:annotation>
+                    <xs:documentation>OGG</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="201">
+                <xs:annotation>
+                    <xs:documentation>MP3</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="3">
+                <xs:annotation>
+                    <xs:documentation>TXT</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="4">
+                <xs:annotation>
+                    <xs:documentation>ZIP</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="5">
+                <xs:annotation>
+                    <xs:documentation>XLS</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="6">
+                <xs:annotation>
+                    <xs:documentation>TIF</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="7">
+                <xs:annotation>
+                    <xs:documentation>HTML</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="8">
+                <xs:annotation>
+                    <xs:documentation>DOC</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="9">
+                <xs:annotation>
+                    <xs:documentation>ODS</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DPassportDeepType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DVarchar300Type">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="300"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DSexType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DNpaType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="80"/>
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation>КоАП РФ</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation>УК РФ</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="3">
+                <xs:annotation>
+                    <xs:documentation>Закон субъекта РФ</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="4">
+                <xs:annotation>
+                    <xs:documentation>ФЗ об исполнительном производстве</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="5">
+                <xs:annotation>
+                    <xs:documentation>ФЗ о судебных приставах</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="6">
+                <xs:annotation>
+                    <xs:documentation>другие федеральные законы</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DVarchar15Type">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="15"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DVarchar3Type">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DDxDigestBase64Type">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="44"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DVarchar5Type">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="5"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DUnifoChargeType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DVarchar160Type">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="160"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DOkvType">
+        <xs:annotation>
+            <xs:documentation>Строка длиной 3 символа, содержащая только цифры</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DVarchar7Type">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="7"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DPersonDocumentTypeType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="2"/>
+            <xs:enumeration value="01">
+                <xs:annotation>
+                    <xs:documentation>Паспорт гражданина СССР</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="02">
+                <xs:annotation>
+                    <xs:documentation>Загранпаспорт гражданина СССР</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="03">
+                <xs:annotation>
+                    <xs:documentation>Свидетельство о рождении</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="04">
+                <xs:annotation>
+                    <xs:documentation>Удостоверение личности офицера</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="05">
+                <xs:annotation>
+                    <xs:documentation>Справка об освобождении из места лишения свободы</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="06">
+                <xs:annotation>
+                    <xs:documentation>Паспорт Минморфлота</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="07">
+                <xs:annotation>
+                    <xs:documentation>Военный билет солдата (матроса, сержанта, старшины)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="08">
+                <xs:annotation>
+                    <xs:documentation>Временное удостоверение, выданное взамен военного билета</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="09">
+                <xs:annotation>
+                    <xs:documentation>Дипломатический паспорт гражданина Российской Федерации</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="10">
+                <xs:annotation>
+                    <xs:documentation>Иностранный паспорт</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="11">
+                <xs:annotation>
+                    <xs:documentation>Свидетельство о рассмотрении ходатайства о признании беженцем по существу</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="12">
+                <xs:annotation>
+                    <xs:documentation>Вид на жительство лица без гражданства</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="13">
+                <xs:annotation>
+                    <xs:documentation>Удостоверение беженца в Российской Федерации</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="14">
+                <xs:annotation>
+                    <xs:documentation>Временное удостоверение личности гражданина Российской Федерации</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="15">
+                <xs:annotation>
+                    <xs:documentation>Разрешение на временное проживание лица без гражданства в Российской Федерации</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="18">
+                <xs:annotation>
+                    <xs:documentation>Свидетельство о предоставлении временного убежища на территории Российской Федерации</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="19">
+                <xs:annotation>
+                    <xs:documentation>Разрешение на временное проживание в Российской Федерации</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="20">
+                <xs:annotation>
+                    <xs:documentation>Свидетельство о предоставлении временного убежища на территории РФ</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="21">
+                <xs:annotation>
+                    <xs:documentation>Паспорт гражданина Российской Федерации</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="22">
+                <xs:annotation>
+                    <xs:documentation>Загранпаспорт гражданина Российской Федерации</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="23">
+                <xs:annotation>
+                    <xs:documentation>Свидетельство о рождении, выданное уполномоченным органом иностранного государства</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="24">
+                <xs:annotation>
+                    <xs:documentation>Удостоверение личности военнослужащего Российской Федерации</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="26">
+                <xs:annotation>
+                    <xs:documentation>Паспорт моряка</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="27">
+                <xs:annotation>
+                    <xs:documentation>Военный билет офицера запаса</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="60">
+                <xs:annotation>
+                    <xs:documentation>Документы, подтверждающие факт регистрации по месту жительства</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="61">
+                <xs:annotation>
+                    <xs:documentation>Свидетельство о смерти</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="91">
+                <xs:annotation>
+                    <xs:documentation>Иные документы, предусмотренные законодательством Российской Федерации</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DFionameType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="60"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DVkspType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="5"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DUipType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="25"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DVarchar1500Type">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="1500"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DVarchar11Type">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="11"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DVarchar200Type">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="200"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DAccountType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DCrdrTypeType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <xs:maxInclusive value="2147483647"/>
+            <xs:minInclusive value="-2147483648"/>
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation>Юридическое лицо</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation>Физическое лицо</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="3">
+                <xs:annotation>
+                    <xs:documentation>Индивидуальный предприниматель</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DVarchar500Type">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="500"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DWarningType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="200"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DCalctypeType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="0"/>
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation>в твердой сумме ежемесячно</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="1000">
+                <xs:annotation>
+                    <xs:documentation>прожиточный минимум</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation>доли доходов ежемесячно</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="3">
+                <xs:annotation>
+                    <xs:documentation>годового процента от суммы</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="8">
+                <xs:annotation>
+                    <xs:documentation>МРОТ</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DOktmoType">
+        <xs:annotation>
+            <xs:documentation>Общероссийский классификатор территорий муниципальных образований (ОКТМО)</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="11"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DVarchar4000Type">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="4000"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DEssentialOffenceType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <xs:maxInclusive value="2147483647"/>
+            <xs:minInclusive value="-2147483648"/>
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation>Коррупционное</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation>Террористическое</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="3">
+                <xs:annotation>
+                    <xs:documentation>Экстремистское</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="4">
+                <xs:annotation>
+                    <xs:documentation>Иное</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element xmlns:fssp="http://www.fssprus.ru/namespace/id/2013/3" type="fssp:IIdType" substitutionGroup="fssp:Object" name="IId"/>
+    <xs:complexType name="IIdType">
+        <xs:annotation>
+            <xs:documentation>Исполнительный документ</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension xmlns:fssp="http://www.fssprus.ru/namespace/id/2013/3" base="fssp:ObjectType">
+                <xs:sequence>
+                    <xs:element type="fssp:DExternalKeyType" minOccurs="1" name="ExternalKey">
+                        <xs:annotation>
+                            <xs:documentation>Внешний ключ</xs:documentation>
+                            <xs:documentation>Внешний ключ документа</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DBarcodeType" minOccurs="1" name="BarCode">
+                        <xs:annotation>
+                            <xs:documentation>Штрих-код</xs:documentation>
+                            <xs:documentation>Уникальный идентификатор документа длиной 15 символов. Первые 7 цифр представляют собой код ОКОГУ. Оставшаяся часть идентификатора (8 символов) представляет собой внутренний уникальный код документа в рамках соответствующего ведомства в алфавите Code128.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DIdType" minOccurs="1" name="IDType">
+                        <xs:annotation>
+                            <xs:documentation>Код вида ИД</xs:documentation>
+                            <xs:documentation>Указывается код типа ИД. Поле обязательное для заполнения. Справочник заполняется в соответствии с ч. 1 ст. 12  ФЗ-229.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DDocnumberType" minOccurs="1" name="IDNum">
+                        <xs:annotation>
+                            <xs:documentation>Номер ИД</xs:documentation>
+                            <xs:documentation>Указывается номер ИД. Поле обязательное для заполнения. Указывается номер бланка исполнительного документа. В случае отсутствия нумерации бланка ИД указывается значение &quot;б/н&quot;.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DDateType" minOccurs="1" name="IDDocDate">
+                        <xs:annotation>
+                            <xs:documentation>Дата выдачи ИД</xs:documentation>
+                            <xs:documentation>Указывается дата выдачи ИД. Поле обязательное для заполнения в соответствии со статьей 13 ФЗ-229.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DPositiveIntegerType" minOccurs="0" name="IDCopy">
+                        <xs:annotation>
+                            <xs:documentation>Экз. ИД</xs:documentation>
+                            <xs:documentation>Указывается номер экземпляра ИД. Поле обязательное для заполнения для ИД, выданных на основании решения или приговора суда о взыскании денежных сумм с солидарных ответчиков  ст. 429 ГПК РФ.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DDocnumberType" minOccurs="1" name="DeloNum">
+                        <xs:annotation>
+                            <xs:documentation>Номер дела или материалов</xs:documentation>
+                            <xs:documentation>Указывается номер дела или материалов, на основании которых выдан ИД. Поле обязательное для заполнения в соответствии со статьей 13 ФЗ-229.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DVarchar150Type" minOccurs="0" name="DeloPlace">
+                        <xs:annotation>
+                            <xs:documentation>Место рассмотрения дела</xs:documentation>
+                            <xs:documentation>Указывается место рассмотрения дела. Поле обязательное для заполнения, если значение поля &quot;Код вида ИД&quot; равно одному из значений: &quot;3&quot; (Акт по делу об административных правонарушениях), &quot;5&quot; (Акт органа, осуществляющего контрольные функции), &quot;7&quot; (Акт другого органа) или &quot;11&quot; (Судебный акт по делу об административном правонарушении). Обязательность заполнения поля для ИД с кодом вида ИД &quot;3&quot; и &quot;11&quot; регламентирована ч.1 п.2 ст.29.10 КоАП РФ.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DDateType" minOccurs="1" name="IDDesDate">
+                        <xs:annotation>
+                            <xs:documentation>Дата принятия решения по делу</xs:documentation>
+                            <xs:documentation>Указывается дата принятия судебного акта, акта другого органа или должностного лица. Поле обязательное для заполнения в соответствии со ст. 13 ФЗ-229</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DDateType" minOccurs="0" name="AktDate">
+                        <xs:annotation>
+                            <xs:documentation>Дата вступления решения в законную силу</xs:documentation>
+                            <xs:documentation>Указывается дата вступления в законную силу судебного акта, акта другого органа или должностного лица. Поле обязательное для заполнения в соответствии со ст.13 ФЗ-229.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DPositiveIntegerType" minOccurs="1" name="SrokPrIsp">
+                        <xs:annotation>
+                            <xs:documentation>Срок предъявления к исполнению</xs:documentation>
+                            <xs:documentation>Указывается срок предъявления ИД к исполнению. Поле обязательное для заполнения. Заполняется в соответствии со ст. 21 ФЗ-229.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DAppealPeriodType" minOccurs="1" name="SrokPrIspType">
+                        <xs:annotation>
+                            <xs:documentation>Тип периода срока предъявления ИД</xs:documentation>
+                            <xs:documentation>Указывается тип периода срока предъявления ИД. Поля заполняется согласно ст. 21 ФЗ-229. В поле может быть указано одно из значений: &quot;1&quot; (если срок исчисляется в днях), 2 (если срок исчисляется в месяцах), 3 (если срок исчисляется в годах).</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DDateType" minOccurs="0" name="SrokDobr">
+                        <xs:annotation>
+                            <xs:documentation>Срок исполнения требования</xs:documentation>
+                            <xs:documentation>Указывается срок исполнения ИД. Поля заполняется согласно ст. 30 ФЗ-229</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DBooleanType" minOccurs="1" name="Isimmediate">
+                        <xs:annotation>
+                            <xs:documentation>Немедленное исполнение</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DClobType" minOccurs="1" name="DebtorEstate">
+                        <xs:annotation>
+                            <xs:documentation>Установочная часть решения</xs:documentation>
+                            <xs:documentation>Указывается установочная часть решения, на основании которого был выдан ИД. Обязательно для заполнения в соответствии со ст. 30 ФЗ-229, а также ч.1 п.4 ст.29.10 КоАП РФ.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DIntegerType" minOccurs="0" name="SrokAppeal">
+                        <xs:annotation>
+                            <xs:documentation>Срок для обжалования решения</xs:documentation>
+                            <xs:documentation>Указывается срок для обжалования решения по ИД. Поле обязательное для заполнения в соответствии со ст. 29.10 КОАП и ФЗ-229, если значение поля &quot;Код типа ИД&quot; равно одному из значений: &quot;3&quot; ( &quot;Акт по делу об административных правонарушениях&quot;),  &quot;8&quot; (Постановление судебного пристава-исполнителя&quot;) или &quot;11&quot; (&quot;Судебный акт по делу об административном правонарушении&quot;).</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DAppealPeriodType" minOccurs="0" name="AppealPeriodType">
+                        <xs:annotation>
+                            <xs:documentation>Тип периода срока обжалования</xs:documentation>
+                            <xs:documentation>Указывается тип периода срока обжалования. Поле обязательное для заполнения в соответствии со ст. 29.10 КОАП и ФЗ-229, если значение поля &quot;Код типа ИД&quot; равно одному из значений: &quot;3&quot; ( &quot;Акт по делу об административных правонарушениях&quot;), &quot;8&quot; (Постановление судебного пристава-исполнителя&quot;) или &quot;11&quot; (&quot;Судебный акт по делу об административном правонарушении&quot;). В поле может быть указано одно из значений: &quot;1&quot; (если срок исчисляется в днях), 2 (если срок исчисляется в месяцах), 3 (если срок исчисляется в годах).</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DWarningType" minOccurs="0" name="OrderAppeal">
+                        <xs:annotation>
+                            <xs:documentation>Порядок обжалования решения</xs:documentation>
+                            <xs:documentation>Указывается порядок обжалования решения по ИД. Поле обязательное для заполнения в соответствии со ст. 29.10 КОАП и ФЗ-229, если значение поля &quot;Код типа ИД&quot; равно одному из значений: : &quot;3&quot; ( &quot;Акт по делу об административных правонарушениях&quot;),  &quot;8&quot; (Постановление судебного пристава-исполнителя&quot;) или &quot;11&quot; (&quot;Судебный акт по делу об административном правонарушении&quot;). Возможные значения: ФЗ229_СТ121_Ч1 - Постановление может быть обжаловано в порядке подчиненности вышестоящему должностному лицу службы судебных приставов или оспорено в суде в десятидневный срок, ФЗ229_СТ121_Ч2 - Постановление может быть оспорено в суде в десятидневный срок, ФЗ229_СТ121_Ч4 - Постановление может быть оспорено в суде в десятидневный срок.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DBooleanType" minOccurs="1" name="Duplicate">
+                        <xs:annotation>
+                            <xs:documentation>Дубликат</xs:documentation>
+                            <xs:documentation>Указывается является ли ИД дубликатом. Поле заполняется, если ИД является дубликатом, выданным при утрате подлинника. Если ИД является подлинником, то поле не заполняется (часть 2 ст. 12 ФЗ-229).</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DOkoguType" minOccurs="1" name="OrganOKOGU">
+                        <xs:annotation>
+                            <xs:documentation>Код по ОКОГУ органа, выдавшего ИД</xs:documentation>
+                            <xs:documentation>Указывается код органа, выдавшего ИД, по Общероссийскому классификатору органов государственной власти и управления. Поле обязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DVarchar200Type" minOccurs="1" name="OrganCode">
+                        <xs:annotation>
+                            <xs:documentation>Код подразделения органа, выдавшего ИД</xs:documentation>
+                            <xs:documentation>Указывается код подразделения органа, выдавшего ИД, по ведомственной классификации органа, выдавшего ИД. Поле обязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DDescriptionType" minOccurs="1" name="Organ">
+                        <xs:annotation>
+                            <xs:documentation>Орган, выдавший ИД</xs:documentation>
+                            <xs:documentation>Указывается наименование суда или подразделения уполномоченного органа, выдавшего ИД. Поле обязательное для заполнения в соответствии со ст. 13 ФЗ-229.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DAddrType" minOccurs="1" name="OrganAdr">
+                        <xs:annotation>
+                            <xs:documentation>Адрес органа, выдавшего ИД</xs:documentation>
+                            <xs:documentation>Указывается адрес, суда или подразделения уполномоченного органа, выдавшего ИД. Поле обязательное для заполнения в соответствии со ст. 13 ФЗ-229. Адрес указывается в формате КЛАДР &lt;страна&gt;, &lt;почтовый индекс&gt;, &lt;регион&gt;, &lt;район&gt;, &lt;город&gt;, &lt;населенный пункт&gt;, &lt;улица&gt;, &lt;дом&gt;, &lt;корпус / строение / владения&gt;, &lt;квартира&gt; или (в случае отсутствия кода страны) в произвольном формате.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DOkpdtrType" minOccurs="1" name="OrganSignCodePost">
+                        <xs:annotation>
+                            <xs:documentation>Код по ОКПДТР лица, вынесшего ИД</xs:documentation>
+                            <xs:documentation>Указывается код должности лица, вынесшего ИД, по Общероссийскому классификатору профессий рабочих, должностей служащих и тарифных разрядов. Поле обязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DVarchar255Type" minOccurs="1" name="OrganSign">
+                        <xs:annotation>
+                            <xs:documentation>Должность лица, вынесшего ИД</xs:documentation>
+                            <xs:documentation>Указывается наименование должности лица, вынесшего ИД, по Общероссийскому классификатору профессий рабочих, должностей служащих и тарифных разрядов. Поле обязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DDescriptionType" minOccurs="1" name="OrganSignFIO">
+                        <xs:annotation>
+                            <xs:documentation>ФИО должностного лица, выдавшего ИД</xs:documentation>
+                            <xs:documentation>Указывается ФИО должностного лица, выдавшего ИД. Поле обязательное для заполнения в соответствии со ст. 13 ФЗ-229.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DBooleanType" minOccurs="0" name="IDConfidentiality">
+                        <xs:annotation>
+                            <xs:documentation>Выдан на осн. судебного акта, текст которого не подлежит размещ. в сети интернет</xs:documentation>
+                            <xs:documentation>Поле обязательное для заполнения для ИД, выданных на основании судебного акта, в соответствии со ФЗ-262. Для ИД, выданных иными органами, поле не заполняется.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DVarchar8Type" minOccurs="1" name="IDSubjCode">
+                        <xs:annotation>
+                            <xs:documentation>Код сущности исполнения ИД(ПИЭВ)</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DDescriptionType" minOccurs="1" name="IDSubjName">
+                        <xs:annotation>
+                            <xs:documentation>Сущность исполнения</xs:documentation>
+                            <xs:documentation>Указывается наименование типа предмета исполнения по справочнику &quot;Типы предметов исполнения&quot;. Поле обязательное для исполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DClobType" minOccurs="1" name="Context">
+                        <xs:annotation>
+                            <xs:documentation>Предмет исполнения уточненный</xs:documentation>
+                            <xs:documentation>Указывается резолютивная часть судебного акта, акта другого органа или должностного лица, на основании которого выдан ИД. Поле обязательное для заполнения в соответствии со ст.13 ФЗ-229.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DEssentialOffenceType" minOccurs="0" name="ElementEssentialOffence">
+                        <xs:annotation>
+                            <xs:documentation>Признак преступления (правонарушения)</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DMoneyType" minOccurs="0" name="IDSum">
+                        <xs:annotation>
+                            <xs:documentation>Сумма долга</xs:documentation>
+                            <xs:documentation>Указывается общая сумма требований, подлежащих взысканию по ИД. Поле необязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DOkvType" minOccurs="0" name="IDSumCurrency">
+                        <xs:annotation>
+                            <xs:documentation>Код по ОКВ валюты взыскания</xs:documentation>
+                            <xs:documentation>Указывается код валюты сумму взыскания по Общероссийскому классификатору валют. Поле обязательное для заполнения, если поле &quot;Сумма&quot; заполнено. </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DBooleanType" minOccurs="0" name="NoAccount">
+                        <xs:annotation>
+                            <xs:documentation>Признак отсутствия счетов</xs:documentation>
+                            <xs:documentation>Указывается факт отсутствия счетов у должника. Поле заполняется, если значение поля &quot;Код типа ИД&quot; равно &quot;5&quot; (Акт органа, осуществляющего контрольные функции)</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DCalctypeType" minOccurs="0" name="Period">
+                        <xs:annotation>
+                            <xs:documentation>Тип периодического начисления долга</xs:documentation>
+                            <xs:documentation>Указывается тип периодического начисления задолженности по ИД. Поле обязательное для заполнения, если значение поля &quot;Сущность исполнения&quot;  содержит значение &quot;Алименты&quot; или &quot;Периодические платежи&quot;.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DDescriptionType" minOccurs="0" name="PeriodSum">
+                        <xs:annotation>
+                            <xs:documentation>Сумма или доля начисления долга</xs:documentation>
+                            <xs:documentation>Указывается сумма или доля начисления задолженности по ИД. Поле заполняется, если значение поля &quot;Сущность исполнения&quot; содержит значение &quot;Алименты&quot; или &quot;Периодические платежи&quot;, или по имущественным ИД, выданным Арбитражным судом для указания срока выплат процентов</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DDaysCountSumType" minOccurs="0" name="DaysCountSum">
+                        <xs:annotation>
+                            <xs:documentation>Срок выплат</xs:documentation>
+                            <xs:documentation>Указывается срок выплат по ИД. Поле может содержать значение &quot;До окончания срока выплат&quot; или &quot;Пожизненно&quot;. Поле заполняется, если значение поля &quot;Сущность исполнения&quot;  содержит значение &quot;Алименты&quot; или &quot;Периодические платежи&quot;, или по имущественным ИД, выданным Арбитражным судом для указания срока выплат процентов</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DDateType" minOccurs="0" name="StartDate">
+                        <xs:annotation>
+                            <xs:documentation>Дата начала выплаты</xs:documentation>
+                            <xs:documentation>Указывается дата начала выплат по ИД. Поле заполняется, если значение поля &quot;Сущность исполнения&quot;  содержит значение &quot;Алименты&quot; или &quot;Периодические платежи&quot;, или по имущественным ИД, выданным Арбитражным судом для указания срока выплат процентов</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DDateType" minOccurs="0" name="EndDate">
+                        <xs:annotation>
+                            <xs:documentation>Дата окончания выплаты</xs:documentation>
+                            <xs:documentation>Указывается дата окончания выплат по ИД. Поле обязательное для заполнения, если значение поля &quot;Срок выплат&quot; равно &quot;До окончания срока выплат&quot;.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DDescriptionType" minOccurs="1" name="ClaimerName">
+                        <xs:annotation>
+                            <xs:documentation>Взыскатель</xs:documentation>
+                            <xs:documentation>Указывается наименование или ФИО взыскателя. Поле обязательное для заполнения в соответствии со ст. 13 ФЗ-229.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DCrdrTypeType" minOccurs="0" name="ClaimerType">
+                        <xs:annotation>
+                            <xs:documentation>Тип взыскателя</xs:documentation>
+                            <xs:documentation>Необязательное поле, может принимать одно из значений: 1 — Юридическое лицо 2 — Физическое лицо 3 — Индивидуальный предприниматель</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DInnType" minOccurs="0" name="ClaimerINN">
+                        <xs:annotation>
+                            <xs:documentation>ИНН взыскателя</xs:documentation>
+                            <xs:documentation>Указывается ИНН взыскателя. Поле обязательное для заполнения, если значение поля &quot;Тип взыскателя&quot; входит в группу &quot;Юридические лица&quot; или равно &quot;ИП&quot; в справочнике &quot;Типы участников принудительного исполнения&quot;.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DKppType" minOccurs="0" name="ClaimerKPP">
+                        <xs:annotation>
+                            <xs:documentation>КПП взыскателя</xs:documentation>
+                            <xs:documentation>Указывается КПП взыскателя. Поле обязательное для заполнения, если значение поля &quot;Тип взыскателя&quot; входит в группу &quot;Юридические лица&quot; в справочнике &quot;Типы участников принудительного исполнения&quot;.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DOgrnType" minOccurs="0" name="ClaimerOGRN">
+                        <xs:annotation>
+                            <xs:documentation>ОГРН взыскателя</xs:documentation>
+                            <xs:documentation>Указывается ОГРН взыскателя. Поле обязательное для заполнения, если значение поля &quot;Тип взыскателя&quot; входит в группу &quot;Юридические лица&quot; в справочнике &quot;Типы участников принудительного исполнения&quot;.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DSnilsType" minOccurs="0" name="ClaimerSNILS">
+                        <xs:annotation>
+                            <xs:documentation>СНИЛС взыскателя</xs:documentation>
+                            <xs:documentation>Указывается СНИЛС взыскателя.  Поле обязательное для заполнения, если значение поля &quot;Тип взыскателя&quot; входит в группу &quot;Физические лица&quot; в справочнике &quot;Типы участников принудительного исполнения&quot;.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DDateType" minOccurs="0" name="ClaimerBirthDate">
+                        <xs:annotation>
+                            <xs:documentation>Дата рождения взыскателя</xs:documentation>
+                            <xs:documentation>Указывается дата рождения взыскателя.  Поле обязательное для заполнения, если значение поля &quot;Тип взыскателя&quot; входит в группу &quot;Физические лица&quot; в справочнике &quot;Типы участников принудительного исполнения&quot;.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DAddrType" minOccurs="0" name="ClaimerBirthPlace">
+                        <xs:annotation>
+                            <xs:documentation>Место рождения взыскателя</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DAddrType" minOccurs="1" name="ClaimerAdr">
+                        <xs:annotation>
+                            <xs:documentation>Адрес взыскателя</xs:documentation>
+                            <xs:documentation>Указывается адрес взыскателя. Поле обязательное для заполнения в соответствии со ст. 13 ФЗ-229. Адрес указывается в формате КЛАДР &lt;страна&gt;, &lt;почтовый индекс&gt;, &lt;регион&gt;, &lt;район&gt;, &lt;город&gt;, &lt;населенный пункт&gt;, &lt;улица&gt;, &lt;дом&gt;, &lt;корпус / строение / владения&gt;, &lt;квартира&gt; или (в случае отсутствия кода страны) в произвольном формате.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DDescriptionType" minOccurs="1" name="DebtorName">
+                        <xs:annotation>
+                            <xs:documentation>Должник</xs:documentation>
+                            <xs:documentation>Указывается наименование или ФИО должника. Поле обязательное для заполнения в соответствии со ст. 13 ФЗ-229.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DCrdrTypeType" minOccurs="0" name="DebtorType">
+                        <xs:annotation>
+                            <xs:documentation>Тип должника</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DSnilsType" minOccurs="0" name="DebtorSNILS">
+                        <xs:annotation>
+                            <xs:documentation>СНИЛС должника</xs:documentation>
+                            <xs:documentation>Указывается СНИЛС должника. Поле обязательное для заполнения, если значение поля &quot;Тип должника&quot; входит в группу &quot;Физические лица&quot; в справочнике &quot;Типы участников принудительного исполнения&quot;.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DInnType" minOccurs="0" name="DebtorINN">
+                        <xs:annotation>
+                            <xs:documentation>ИНН должника</xs:documentation>
+                            <xs:documentation>Указывается ИНН должника. Поле обязательное для заполнения в соответствии со ст.13 ФЗ-229, если значение поля &quot;Тип должника&quot; входит в группу &quot;Юридические лица&quot; или равно &quot;ИП&quot; в справочнике &quot;Типы участников принудительного исполнения&quot;.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DKppType" minOccurs="0" name="DebtorKPP">
+                        <xs:annotation>
+                            <xs:documentation>КПП должника</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DOgrnType" minOccurs="0" name="DebtorOGRN">
+                        <xs:annotation>
+                            <xs:documentation>ОГРН должника</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DDateType" minOccurs="0" name="DebtorRegDate">
+                        <xs:annotation>
+                            <xs:documentation>Дата регистрации должника</xs:documentation>
+                            <xs:documentation>Указывается дата регистрации должника. Поле обязательное для заполнения в соответствии со ст.13 ФЗ-229, если значение поля &quot;Тип должника&quot;входит в группу &quot;Юридические лица&quot; или равно &quot;ИП&quot; в справочнике &quot;Типы участников принудительного исполнения&quot;.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DVarchar150Type" minOccurs="0" name="DebtorRegPlace">
+                        <xs:annotation>
+                            <xs:documentation>Место регистрации должника-ИП</xs:documentation>
+                            <xs:documentation>Указывается место регистрации должника - индивидуального предпринимателя. Поле обязательное для заполнения в соответствии со ст.13 ФЗ-229, если значение поля &quot;Тип должника&quot; равно &quot;ИП&quot; в справочнике &quot;Типы участников принудительного исполнения&quot;.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DAddrType" minOccurs="0" name="DebtorAdr">
+                        <xs:annotation>
+                            <xs:documentation>Адрес должника</xs:documentation>
+                            <xs:documentation>Указывается адрес должника (места жительства или пребывания). Поле обязательное для заполнения в соответствии со ст. 13 ФЗ-229, если поле &quot;Код страны гражданства должника по ОКСМ&quot;; не заполнено либо равно значению &quot;643&quot;; (Российская Федерация). Адрес указывается в формате КЛАДР &lt;страна&gt;, &lt;почтовый индекс&gt;, &lt;регион&gt;, &lt;район&gt;, &lt;город&gt;, &lt;населенный пункт&gt;, &lt;улица&gt;, &lt;дом&gt;, &lt;корпус / строение / владения&gt;, &lt;квартира&gt; или (в случае отсутствия кода страны) в произвольном формате.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DDateType" minOccurs="0" name="DebtorBirthDate">
+                        <xs:annotation>
+                            <xs:documentation>Дата рождения должника</xs:documentation>
+                            <xs:documentation>Указывается дата рождения должника. Поле обязательное для заполнения в соответствии со ст. 13 ФЗ-229, если значение поля &quot;Тип должника&quot; входит в группу &quot;Физические лица&quot; в справочнике &quot;Типы участников принудительного исполнения&quot;.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DGenderType" minOccurs="0" name="DebtorGender">
+                        <xs:annotation>
+                            <xs:documentation>Пол должника</xs:documentation>
+                            <xs:documentation>Указывается пол должника. Поле обязательное для заполнения, если значение поля &quot;Тип должника&quot; входит в группу &quot;Физические лица&quot; в справочнике &quot;Типы участников принудительного исполнения&quot;.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DCaptionType" minOccurs="0" name="DebtorCountryCode">
+                        <xs:annotation>
+                            <xs:documentation>Код страны принадлежности должника по ОКСМ</xs:documentation>
+                            <xs:documentation>Указывается код страны гражданства или регистарции юридического лица по ОКСМ.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DAddrType" minOccurs="0" name="DebtorBirthPlace">
+                        <xs:annotation>
+                            <xs:documentation>Место рождения должника</xs:documentation>
+                            <xs:documentation>Указывается место рождения должника. Поле обязательное для заполнения в соответствии со ст. 13 ФЗ-229, если значение поля &quot;Тип должника&quot; входит в группу &quot;Физические лица&quot; в справочнике &quot;Типы участников принудительного исполнения&quot;.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DUipType" minOccurs="0" name="AltPayerId">
+                        <xs:annotation>
+                            <xs:documentation>Альтернативный идентификатор плательщика</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="DetMvvDatumDocument">
+                        <xs:annotation>
+                            <xs:documentation>Дополнительные сведения</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                            <xs:choice minOccurs="1" maxOccurs="1">
+<xs:element ref="fssp:MvvDatumTransport"/>
+<xs:element ref="fssp:MvvDatumSvedRab"/>
+<xs:element ref="fssp:MvvDatumOtherPerson"/>
+<xs:element ref="fssp:MvvDatumSvedNedv"/>
+<xs:element ref="fssp:MvvDatumAvailabilityAcc"/>
+<xs:element ref="fssp:MvvDatumIdentificator"/>
+                            </xs:choice>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="NpaActs">
+                        <xs:annotation>
+                            <xs:documentation>Перечень НПА</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                            <xs:choice minOccurs="1" maxOccurs="1">
+<xs:element ref="fssp:NpaAct"/>
+                            </xs:choice>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="DetIIdBlankNumbersIId">
+                        <xs:annotation>
+                            <xs:documentation>Бланки ИД</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                            <xs:choice minOccurs="1" maxOccurs="1">
+<xs:element ref="fssp:IIdBlankNumbers"/>
+                            </xs:choice>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="DetIdPaymentPropertiesId">
+                        <xs:annotation>
+                            <xs:documentation>Реквизиты для перечисления (расшифровка по КБК) </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                            <xs:choice minOccurs="1" maxOccurs="1">
+<xs:element ref="fssp:IdPaymentProperties"/>
+                            </xs:choice>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="DetAttachment">
+                        <xs:annotation>
+                            <xs:documentation>Вложения</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                            <xs:choice minOccurs="1" maxOccurs="1">
+<xs:element ref="fssp:Attachment"/>
+                            </xs:choice>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element xmlns:fssp="http://www.fssprus.ru/namespace/id/2013/3" type="fssp:IdPaymentPropertiesType" substitutionGroup="fssp:Object" name="IdPaymentProperties"/>
+    <xs:complexType name="IdPaymentPropertiesType">
+        <xs:annotation>
+            <xs:documentation>Реквизиты для перечисления</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension xmlns:fssp="http://www.fssprus.ru/namespace/id/2013/3" base="fssp:ObjectType">
+                <xs:sequence>
+                    <xs:element type="fssp:DVarchar300Type" minOccurs="1" name="RecpName">
+                        <xs:annotation>
+                            <xs:documentation>Наименование получателя</xs:documentation>
+                            <xs:documentation>Указывается наименование получателя. Поле обязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DOkatoType" minOccurs="0" name="Okato">
+                        <xs:annotation>
+                            <xs:documentation>ОКАТО получателя</xs:documentation>
+                            <xs:documentation>Указывается ОКАТО получателя. Поле обязательное для заполнения при перечислении задолженности в соответствующий бюджет.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DOktmoType" minOccurs="0" name="Oktmo">
+                        <xs:annotation>
+                            <xs:documentation>OKTMO получателя</xs:documentation>
+                            <xs:documentation>Указывается OKTMO получателя. Поле обязательное для заполнения при перечислении задолженности в соответствующий бюджет.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DInnType" minOccurs="1" name="RecpINN">
+                        <xs:annotation>
+                            <xs:documentation>ИНН получателя</xs:documentation>
+                            <xs:documentation>Указывается ИНН получателя. Поле обязательное для заполнения. При отсутствии у получателя - физического лица  ИНН, проставляется значение «0»</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DKppType" minOccurs="1" name="RecpKPP">
+                        <xs:annotation>
+                            <xs:documentation>КПП получателя</xs:documentation>
+                            <xs:documentation>Указывается КПП получателя. Поле обязательное для заполнения. При отсутствии у получателя - физического лица  КПП, проставляется значение «0»</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DVarchar20Type" minOccurs="0" name="RecpCnt">
+                        <xs:annotation>
+                            <xs:documentation>Счет получателя</xs:documentation>
+                            <xs:documentation>Указывается расчетный счет получателя. Поле обязательное для заполнения,если получателем не является кредитная организация</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DVarchar20Type" minOccurs="0" name="RecpBankCorAcc">
+                        <xs:annotation>
+                            <xs:documentation>Корреспондентский счет банка получателя</xs:documentation>
+                            <xs:documentation>Указывается корреспондентский счет получателя. Поле обязательное для заполнения, если банк получателя не является ГРКЦ/РКЦ.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DVarchar11Type" minOccurs="0" name="PersonalAccount">
+                        <xs:annotation>
+                            <xs:documentation>Лицевой счет</xs:documentation>
+                            <xs:documentation>Указывается лицевой счет получателя</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DVarchar255Type" minOccurs="1" name="RecpBank">
+                        <xs:annotation>
+                            <xs:documentation>Наименование банка получателя</xs:documentation>
+                            <xs:documentation>Указывается наименование банка получателя. Поле обязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DVarchar9Type" minOccurs="1" name="RecpBIK">
+                        <xs:annotation>
+                            <xs:documentation>БИК банка получателя</xs:documentation>
+                            <xs:documentation>Указывается БИК банка получателя. Поле обязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DMoneyType" minOccurs="1" name="RekvSum">
+                        <xs:annotation>
+                            <xs:documentation>Сумма</xs:documentation>
+                            <xs:documentation>Указывается перечисляемая сумма. Поле обязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DVarchar20Type" minOccurs="0" name="Kbk">
+                        <xs:annotation>
+                            <xs:documentation>КБК</xs:documentation>
+                            <xs:documentation>Указывается КБК, по которому перечисляется сумма. Поле обязательное для заполнения при перечислении задолженности в соответствующий бюджет.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DVarchar2Type" minOccurs="0" name="PokPl">
+                        <xs:annotation>
+                            <xs:documentation>Показатель типа платежа</xs:documentation>
+                            <xs:documentation>Указывается тип платежа. Поле обязательное для заполнения при перечислении задолженности в соответствующий бюджет.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DUnifoChargeType" minOccurs="0" name="UNIFOCode">
+                        <xs:annotation>
+                            <xs:documentation>УИН начисления</xs:documentation>
+                            <xs:documentation>Уникальный идентификационный номер начисления в ГИС ГМП. Поле обязательное для заполнения при взыскании задолженности в соответствующий бюджет.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element xmlns:fssp="http://www.fssprus.ru/namespace/id/2013/3" type="fssp:AttachmentType" substitutionGroup="fssp:Object" name="Attachment"/>
+    <xs:complexType name="AttachmentType">
+        <xs:annotation>
+            <xs:documentation>Вложение</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension xmlns:fssp="http://www.fssprus.ru/namespace/id/2013/3" base="fssp:ObjectType">
+                <xs:sequence>
+                    <xs:element type="fssp:DFilenameType" minOccurs="0" name="DsFileName">
+                        <xs:annotation>
+                            <xs:documentation>Имя файла</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DContentTypeType" minOccurs="0" name="DsContentType">
+                        <xs:annotation>
+                            <xs:documentation>Тип</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DDxDigestBase64Type" minOccurs="0" name="dsDataDigest">
+                        <xs:annotation>
+                            <xs:documentation>Хэш данных вложения</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element xmlns:fssp="http://www.fssprus.ru/namespace/id/2013/3" type="fssp:MvvDatumAvailabilityAccType" substitutionGroup="fssp:Object" name="MvvDatumAvailabilityAcc"/>
+    <xs:complexType name="MvvDatumAvailabilityAccType">
+        <xs:annotation>
+            <xs:documentation>Сведения о наличии денежных средств на счете</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension xmlns:fssp="http://www.fssprus.ru/namespace/id/2013/3" base="fssp:ObjectType">
+                <xs:sequence>
+                    <xs:element type="fssp:DAccountType" minOccurs="1" name="Acc">
+                        <xs:annotation>
+                            <xs:documentation>Счет</xs:documentation>
+                            <xs:documentation>Указывается номер счета должника. Поле обязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DOkvType" minOccurs="1" name="CurrencyType">
+                        <xs:annotation>
+                            <xs:documentation>Код валюты</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DMoneyType" minOccurs="0" name="Summa">
+                        <xs:annotation>
+                            <xs:documentation>Сумма</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DVarchar100Type" minOccurs="0" name="SummaInfo">
+                        <xs:annotation>
+                            <xs:documentation>Сведения о сумме</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DBikType" minOccurs="1" name="BicBank">
+                        <xs:annotation>
+                            <xs:documentation>БИК</xs:documentation>
+                            <xs:documentation>Указывается БИК кредитной организации, в которой открыт счет должника. Поле обязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DVarchar10Type" minOccurs="0" name="DeptCode">
+                        <xs:annotation>
+                            <xs:documentation>Код подразделения</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DDateType" minOccurs="1" name="ActDate">
+                        <xs:annotation>
+                            <xs:documentation>Актуальность сведений</xs:documentation>
+                            <xs:documentation>Указывается дата выдачи документов, справок, иных документов-оснований по которым были получены сведения. Поле обязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element xmlns:fssp="http://www.fssprus.ru/namespace/id/2013/3" type="fssp:MvvDatumOtherPersonType" substitutionGroup="fssp:Object" name="MvvDatumOtherPerson"/>
+    <xs:complexType name="MvvDatumOtherPersonType">
+        <xs:annotation>
+            <xs:documentation>Иные лица</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension xmlns:fssp="http://www.fssprus.ru/namespace/id/2013/3" base="fssp:ObjectType">
+                <xs:sequence>
+                    <xs:element type="fssp:DIdType" minOccurs="1" name="EnttTypeid">
+                        <xs:annotation>
+                            <xs:documentation>Код роли лица</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DContrTypeType" minOccurs="1" name="EnttType">
+                        <xs:annotation>
+                            <xs:documentation>Роль лица</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DVarchar1000Type" minOccurs="1" name="EnttFio">
+                        <xs:annotation>
+                            <xs:documentation>ФИО лица</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DAddrType" minOccurs="1" name="EnttAddress">
+                        <xs:annotation>
+                            <xs:documentation>Адрес лица</xs:documentation>
+                            <xs:documentation>Адрес указывается в формате КЛАДР &lt;страна&gt;, &lt;почтовый индекс&gt;, &lt;регион&gt;, &lt;район&gt;, &lt;город&gt;, &lt;населенный пункт&gt;, &lt;улица&gt;, &lt;дом&gt;, &lt;корпус / строение / владения&gt;, &lt;квартира&gt; или (в случае отсутствия кода страны) в произвольном формате.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DDateType" minOccurs="0" name="EnttBirthDate">
+                        <xs:annotation>
+                            <xs:documentation>Дата рождения лица</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DAddrType" minOccurs="0" name="EnttBirthPlace">
+                        <xs:annotation>
+                            <xs:documentation>Место рождения</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DCaptionType" minOccurs="1" name="EnttPhone">
+                        <xs:annotation>
+                            <xs:documentation>Телефон лица</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DDateType" minOccurs="1" name="ActDate">
+                        <xs:annotation>
+                            <xs:documentation>Актуальность сведений  </xs:documentation>
+                            <xs:documentation>Указывается дата выдачи документов, справок, иных документов-оснований по которым были получены сведения. Поле обязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element xmlns:fssp="http://www.fssprus.ru/namespace/id/2013/3" type="fssp:MvvDatumSvedRabType" substitutionGroup="fssp:Object" name="MvvDatumSvedRab"/>
+    <xs:complexType name="MvvDatumSvedRabType">
+        <xs:annotation>
+            <xs:documentation>Место получения дохода</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension xmlns:fssp="http://www.fssprus.ru/namespace/id/2013/3" base="fssp:ObjectType">
+                <xs:sequence>
+                    <xs:element type="fssp:DVarchar1000Type" minOccurs="1" name="NaimOrg">
+                        <xs:annotation>
+                            <xs:documentation>Наименование организации/ФИО индивидуального предпринимателя</xs:documentation>
+                            <xs:documentation>Указывается место работы должника. Поле обязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DVarchar300Type" minOccurs="1" name="AdresJ">
+                        <xs:annotation>
+                            <xs:documentation>Юридический адрес</xs:documentation>
+                            <xs:documentation>Указывается юридический адрес места работы должника. Поле обязательное для заполнения. Адрес указывается в формате КЛАДР &lt;страна&gt;, &lt;почтовый индекс&gt;, &lt;регион&gt;, &lt;район&gt;, &lt;город&gt;, &lt;населенный пункт&gt;, &lt;улица&gt;, &lt;дом&gt;, &lt;корпус / строение / владения&gt;, &lt;квартира&gt; или (в случае отсутствия кода страны) в произвольном формате.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DVarchar300Type" minOccurs="1" name="AdresF">
+                        <xs:annotation>
+                            <xs:documentation>Фактический адрес</xs:documentation>
+                            <xs:documentation>Указывается фактический адрес места работы должника. Поле обязательное для заполнения.  Поле обязательное для заполнения. Адрес указывается в формате КЛАДР &lt;страна&gt;, &lt;почтовый индекс&gt;, &lt;регион&gt;, &lt;район&gt;, &lt;город&gt;, &lt;населенный пункт&gt;, &lt;улица&gt;, &lt;дом&gt;, &lt;корпус / строение / владения&gt;, &lt;квартира&gt; или (в случае отсутствия кода страны) в произвольном формате.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DDateType" minOccurs="1" name="ActDate">
+                        <xs:annotation>
+                            <xs:documentation>Актуальность сведений  </xs:documentation>
+                            <xs:documentation>Указывается дата выдачи документов, справок, иных документов-оснований по которым были получены сведения. Поле обязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element xmlns:fssp="http://www.fssprus.ru/namespace/id/2013/3" type="fssp:MvvDatumIdentificatorType" substitutionGroup="fssp:Object" name="MvvDatumIdentificator"/>
+    <xs:complexType name="MvvDatumIdentificatorType">
+        <xs:annotation>
+            <xs:documentation>Удостоверение личности</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension xmlns:fssp="http://www.fssprus.ru/namespace/id/2013/3" base="fssp:ObjectType">
+                <xs:sequence>
+                    <xs:element type="fssp:DPersonDocumentTypeType" minOccurs="1" name="TypeDocCode">
+                        <xs:annotation>
+                            <xs:documentation>Код типа документа</xs:documentation>
+                            <xs:documentation>Указывается код вида документа, удостоверяющего личность по справочнику &quot;Коды документов, удостоверяющих личность&quot;. Поле обязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DVarchar25Type" minOccurs="1" name="NumDoc">
+                        <xs:annotation>
+                            <xs:documentation>Номер документа</xs:documentation>
+                            <xs:documentation>Указывается номер документа в соответствии с форматом, определенным для данного вида документа. Поле обязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DVarchar25Type" minOccurs="0" name="SerDoc">
+                        <xs:annotation>
+                            <xs:documentation>Серия документа</xs:documentation>
+                            <xs:documentation>Указывается серия документа в соответствии с форматом, определенным для данного вида документа. Поле необязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DDateType" minOccurs="1" name="DateDoc">
+                        <xs:annotation>
+                            <xs:documentation>Дата выдачи документа</xs:documentation>
+                            <xs:documentation>Указывается дата выдачи документа, удостоверяющего личность. Поле обязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DVarchar7Type" minOccurs="1" name="CodeDep">
+                        <xs:annotation>
+                            <xs:documentation>Код подразделения</xs:documentation>
+                            <xs:documentation>Код подразделения органа, выдавшего документ, удостоверяющий личность. Поле заполняется в формате &quot;ХХХ-ХХХ&quot;.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DVarchar300Type" minOccurs="1" name="IssuedDoc">
+                        <xs:annotation>
+                            <xs:documentation>Кем выдан</xs:documentation>
+                            <xs:documentation>Указывается наименование органа, выдавшего документ, удостоверяющий личность. Поле обязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DDescriptionType" minOccurs="0" name="FioDoc">
+                        <xs:annotation>
+                            <xs:documentation>ФИО</xs:documentation>
+                            <xs:documentation>Указывается ФИО лица, указанного в документе, удостоверяющем личность.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DGenderType" minOccurs="0" name="Gender">
+                        <xs:annotation>
+                            <xs:documentation>Пол</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DVarchar300Type" minOccurs="0" name="StrAddr">
+                        <xs:annotation>
+                            <xs:documentation>Адрес</xs:documentation>
+                            <xs:documentation>Адрес указывается в формате КЛАДР &lt;страна&gt;, &lt;почтовый индекс&gt;, &lt;регион&gt;, &lt;район&gt;, &lt;город&gt;, &lt;населенный пункт&gt;, &lt;улица&gt;, &lt;дом&gt;, &lt;корпус / строение / владения&gt;, &lt;квартира&gt; или (в случае отсутствия кода страны) в произвольном формате.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DDateType" minOccurs="0" name="BirthDate">
+                        <xs:annotation>
+                            <xs:documentation>Дата рождения</xs:documentation>
+                            <xs:documentation>Указывается дата рождения лица, указанного в документе, удостоверяющем личность.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DVarchar300Type" minOccurs="0" name="BirthPlace">
+                        <xs:annotation>
+                            <xs:documentation>Место рождения</xs:documentation>
+                            <xs:documentation>Указывается место рождения лица, указанного в документе, удостоверяющем личность.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DDateType" minOccurs="1" name="ActDate">
+                        <xs:annotation>
+                            <xs:documentation>Актуальность сведений  </xs:documentation>
+                            <xs:documentation>Указывается дата выдачи документов, справок, иных документов-оснований по которым были получены сведения. Поле обязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element xmlns:fssp="http://www.fssprus.ru/namespace/id/2013/3" type="fssp:MvvDatumTransportType" substitutionGroup="fssp:Object" name="MvvDatumTransport"/>
+    <xs:complexType name="MvvDatumTransportType">
+        <xs:annotation>
+            <xs:documentation>Транспортное средство</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension xmlns:fssp="http://www.fssprus.ru/namespace/id/2013/3" base="fssp:ObjectType">
+                <xs:sequence>
+                    <xs:element type="fssp:DVarchar50Type" minOccurs="1" name="AutomType">
+                        <xs:annotation>
+                            <xs:documentation>Категория транспортного средства</xs:documentation>
+                            <xs:documentation>Указывается категория транспортного средства. Поле заполняется в соответствие с постановлением Правительства РФ от 12.08.1994 г. № 938 &quot;
+О ГОСУДАРСТВЕННОЙ РЕГИСТРАЦИИ АВТОМОТОТРАНСПОРТНЫХ СРЕДСТВ И ДРУГИХ ВИДОВ САМОХОДНОЙ ТЕХНИКИ НА ТЕРРИТОРИИ РОССИЙСКОЙ ФЕДЕРАЦИИ&quot;. Поле обязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DVarchar50Type" minOccurs="0" name="Producer">
+                        <xs:annotation>
+                            <xs:documentation>Марка</xs:documentation>
+                            <xs:documentation>Указывается марка транспортного средства. Поле обязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DVarchar50Type" minOccurs="0" name="Model">
+                        <xs:annotation>
+                            <xs:documentation>Модель</xs:documentation>
+                            <xs:documentation>Указывается модель транспортного средства. Поле обязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DVarchar20Type" minOccurs="0" name="Color">
+                        <xs:annotation>
+                            <xs:documentation>Цвет</xs:documentation>
+                            <xs:documentation>Указывается цвет транспортного средства. Поле необязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DVarchar20Type" minOccurs="0" name="RegNo">
+                        <xs:annotation>
+                            <xs:documentation>Государственный регистрационный знак</xs:documentation>
+                            <xs:documentation>Указывается государственный регистрационный знак транспортного средства. Поле обязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DVarchar20Type" minOccurs="0" name="Vin">
+                        <xs:annotation>
+                            <xs:documentation>VIN</xs:documentation>
+                            <xs:documentation>Указывается VIN транспортного средства. Поле необязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DVarchar50Type" minOccurs="0" name="Engine">
+                        <xs:annotation>
+                            <xs:documentation>Номер двигателя</xs:documentation>
+                            <xs:documentation>Указывается номер двигателя транспортного средства. Поле необязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DBirthyearType" minOccurs="0" name="MadeYear">
+                        <xs:annotation>
+                            <xs:documentation>Год выпуска автотранспортного средства</xs:documentation>
+                            <xs:documentation>Указывается год выпуска транспортного средства. Поле необязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DVarchar10Type" minOccurs="0" name="DeptCode">
+                        <xs:annotation>
+                            <xs:documentation>Код подразделения</xs:documentation>
+                            <xs:documentation>Указывается код подразделения, которое зарегистрировало транспортное средство. Поле обязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DDateType" minOccurs="1" name="ActDate">
+                        <xs:annotation>
+                            <xs:documentation>Актуальность сведений</xs:documentation>
+                            <xs:documentation>Указывается дата выдачи документов, справок, иных документов-оснований по которым были получены сведения. Поле обязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element xmlns:fssp="http://www.fssprus.ru/namespace/id/2013/3" type="fssp:NpaActType" substitutionGroup="fssp:Object" name="NpaAct"/>
+    <xs:complexType name="NpaActType">
+        <xs:annotation>
+            <xs:documentation>Перечень НПА для постановлений по ИП</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension xmlns:fssp="http://www.fssprus.ru/namespace/id/2013/3" base="fssp:ObjectType">
+                <xs:sequence>
+                    <xs:element type="fssp:DNpaType" minOccurs="0" name="NPAType">
+                        <xs:annotation>
+                            <xs:documentation>Тип НПА</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DCaptionType" minOccurs="0" name="NpaCaption">
+                        <xs:annotation>
+                            <xs:documentation>Наименование НПА</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="NpaArticleParts">
+                        <xs:annotation>
+                            <xs:documentation>Статьи</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                            <xs:choice minOccurs="1" maxOccurs="1">
+<xs:element ref="fssp:NpaArticle"/>
+                            </xs:choice>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element xmlns:fssp="http://www.fssprus.ru/namespace/id/2013/3" type="fssp:MvvDatumSvedNedvType" substitutionGroup="fssp:Object" name="MvvDatumSvedNedv"/>
+    <xs:complexType name="MvvDatumSvedNedvType">
+        <xs:annotation>
+            <xs:documentation>Сведения о недвижимости</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension xmlns:fssp="http://www.fssprus.ru/namespace/id/2013/3" base="fssp:ObjectType">
+                <xs:sequence>
+                    <xs:element type="fssp:DVarchar4000Type" minOccurs="1" name="NaimNedv">
+                        <xs:annotation>
+                            <xs:documentation>Наименование объекта недвижимости</xs:documentation>
+                            <xs:documentation>Указывается наименование объекта недвижимости. Поле обязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DMoneyType" minOccurs="1" name="SNedv">
+                        <xs:annotation>
+                            <xs:documentation>Площадь</xs:documentation>
+                            <xs:documentation>Указывается площадь  в метрах квадратных. Поле обязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DVarchar50Type" minOccurs="0" name="InvNNedv">
+                        <xs:annotation>
+                            <xs:documentation>Инвентарный номер</xs:documentation>
+                            <xs:documentation>Указывается инвентарный номер. Поле необязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DVarchar100Type" minOccurs="0" name="KadastrN">
+                        <xs:annotation>
+                            <xs:documentation>Кадастровый номер</xs:documentation>
+                            <xs:documentation>Указывается кадастровый номер.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DVarchar500Type" minOccurs="0" name="ConditionalNumber">
+                        <xs:annotation>
+                            <xs:documentation>Условный номер</xs:documentation>
+                            <xs:documentation>Указывается условный номер.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DVarchar1500Type" minOccurs="1" name="AdresNedv">
+                        <xs:annotation>
+                            <xs:documentation>Точный адрес (местоположение)</xs:documentation>
+                            <xs:documentation>Указывается точный адрес (местоположение). Поле обязательное для заполнения. Адрес указывается в формате КЛАДР &lt;страна&gt;, &lt;почтовый индекс&gt;, &lt;регион&gt;, &lt;район&gt;, &lt;город&gt;, &lt;населенный пункт&gt;, &lt;улица&gt;, &lt;дом&gt;, &lt;корпус / строение / владения&gt;, &lt;квартира&gt; или (в случае отсутствия кода страны) в произвольном формате.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DDateType" minOccurs="1" name="ActDate">
+                        <xs:annotation>
+                            <xs:documentation>Актуальность сведений  </xs:documentation>
+                            <xs:documentation>Указывается дата выдачи документов, справок, иных документов-оснований по которым были получены сведения. Поле обязательное для заполнения.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element xmlns:fssp="http://www.fssprus.ru/namespace/id/2013/3" type="fssp:NpaArticleType" substitutionGroup="fssp:Object" name="NpaArticle"/>
+    <xs:complexType name="NpaArticleType">
+        <xs:annotation>
+            <xs:documentation>Статьи НПА</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension xmlns:fssp="http://www.fssprus.ru/namespace/id/2013/3" base="fssp:ObjectType">
+                <xs:sequence>
+                    <xs:element type="fssp:DVarchar10Type" minOccurs="1" name="NpaArticle">
+                        <xs:annotation>
+                            <xs:documentation>Статья</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element type="fssp:DBooleanType" minOccurs="0" name="IsMain">
+                        <xs:annotation>
+                            <xs:documentation>Основная статья</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="NpaParts">
+                        <xs:annotation>
+                            <xs:documentation>Части</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                            <xs:choice minOccurs="1" maxOccurs="1">
+<xs:element ref="fssp:NpaPart"/>
+                            </xs:choice>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element xmlns:fssp="http://www.fssprus.ru/namespace/id/2013/3" type="fssp:NpaPartType" substitutionGroup="fssp:Object" name="NpaPart"/>
+    <xs:complexType name="NpaPartType">
+        <xs:annotation>
+            <xs:documentation>Части НПА</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension xmlns:fssp="http://www.fssprus.ru/namespace/id/2013/3" base="fssp:ObjectType">
+                <xs:sequence>
+                    <xs:element type="fssp:DVarchar10Type" minOccurs="1" name="NpaPart">
+                        <xs:annotation>
+                            <xs:documentation>Часть</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="NpaPoints">
+                        <xs:annotation>
+                            <xs:documentation>Пункты</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                            <xs:choice minOccurs="1" maxOccurs="1">
+<xs:element ref="fssp:NpaPoint"/>
+                            </xs:choice>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element xmlns:fssp="http://www.fssprus.ru/namespace/id/2013/3" type="fssp:NpaPointType" substitutionGroup="fssp:Object" name="NpaPoint"/>
+    <xs:complexType name="NpaPointType">
+        <xs:annotation>
+            <xs:documentation>Пункты НПА</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension xmlns:fssp="http://www.fssprus.ru/namespace/id/2013/3" base="fssp:ObjectType">
+                <xs:sequence>
+                    <xs:element type="fssp:DVarchar10Type" minOccurs="1" name="NpaPoint">
+                        <xs:annotation>
+                            <xs:documentation>Пункт</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="NpaSubpoints">
+                        <xs:annotation>
+                            <xs:documentation>Подпункты</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                            <xs:choice minOccurs="1" maxOccurs="1">
+<xs:element ref="fssp:NpaSubpoint"/>
+                            </xs:choice>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element xmlns:fssp="http://www.fssprus.ru/namespace/id/2013/3" type="fssp:NpaSubpointType" substitutionGroup="fssp:Object" name="NpaSubpoint"/>
+    <xs:complexType name="NpaSubpointType">
+        <xs:annotation>
+            <xs:documentation>Подпункты НПА</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension xmlns:fssp="http://www.fssprus.ru/namespace/id/2013/3" base="fssp:ObjectType">
+                <xs:sequence>
+                    <xs:element type="fssp:DVarchar10Type" minOccurs="1" name="NpaSubpoint">
+                        <xs:annotation>
+                            <xs:documentation>Подпункт</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element xmlns:fssp="http://www.fssprus.ru/namespace/id/2013/3" type="fssp:IIdBlankNumbersType" substitutionGroup="fssp:Object" name="IIdBlankNumbers"/>
+    <xs:complexType name="IIdBlankNumbersType">
+        <xs:annotation>
+            <xs:documentation>Номера бланков для ИД</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension xmlns:fssp="http://www.fssprus.ru/namespace/id/2013/3" base="fssp:ObjectType">
+                <xs:sequence>
+                    <xs:element type="fssp:DDocnumberType" minOccurs="1" name="BlankNumber">
+                        <xs:annotation>
+                            <xs:documentation>Номер бланка ИД</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element xmlns:fssp="http://www.fssprus.ru/namespace/id/2013/3" type="fssp:ObjectType" abstract="true" name="Object"/>
+    <xs:complexType name="ObjectType">
+        <xs:annotation>
+            <xs:documentation>Базовый класс для всех документов</xs:documentation>
+        </xs:annotation>
+    </xs:complexType>
+    <xs:group name="DocumentsGroup">
+        <xs:sequence>
+            <xs:element xmlns:fssp="http://www.fssprus.ru/namespace/id/2013/3" minOccurs="0" maxOccurs="unbounded" ref="fssp:Object">
+                <xs:annotation>
+                    <xs:appinfo/>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+</xs:schema>
