@@ -9,29 +9,51 @@
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>7.0</version>
-            <scope>provided</scope>
-        </dependency>
+
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
             <version>2.3</version>
             <type>jar</type>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>com.impulsm.utils</groupId>-->
-            <!--<artifactId>signature-utils</artifactId>-->
-            <!--<version>1.2.0-SNAPSHOT</version>-->
-            <!--<type>jar</type>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>com.impulsm</groupId>
             <artifactId>Utils</artifactId>
             <version>1.7-SNAPSHOT</version>
             <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.impulsm</groupId>
+            <artifactId>DataBaseAuthorization</artifactId>
+            <version>1.8</version>
+        </dependency>
+        <dependency>
+            <groupId>com.impulsm.utils</groupId>
+            <artifactId>signature-utils</artifactId>
+            <version>1.2.0-SNAPSHOT</version>
+            <type>jar</type>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.santuario</groupId>
+                    <artifactId>xmlsec</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.wss4j</groupId>
+                    <artifactId>wss4j</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.cxf</groupId>
+                    <artifactId>cxf-rt-frontend-jaxws</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.cxf</groupId>
+                    <artifactId>cxf-rt-ws-security</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.bouncycastle</groupId>
+                    <artifactId>bcprov-jdk16</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -42,18 +64,6 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>1.1.2</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jglue.cdi-unit</groupId>
-            <artifactId>cdi-unit</artifactId>
-            <version>3.1.2</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>ru.CryptoPro</groupId>
@@ -71,16 +81,6 @@
             <version>1.2</version>
         </dependency>
         <dependency>
-            <groupId>com.sun.xml.ws</groupId>
-            <artifactId>jaxws-rt</artifactId>
-            <version>2.2.8</version>
-        </dependency>
-        <!--<dependency>-->
-            <!--<groupId>org.apache.ws.security</groupId>-->
-            <!--<artifactId>wss4j</artifactId>-->
-            <!--<version>1.6.11</version>-->
-        <!--</dependency>-->
-        <dependency>
             <groupId>org.apache.santuario</groupId>
             <artifactId>xmlsec</artifactId>
             <version>1.5.8</version>
@@ -90,6 +90,42 @@
             <artifactId>wss4j-ws-security-dom</artifactId>
             <version>2.0.1</version>
         </dependency>
+
+        <!--TEST DEPENDENCIES-->
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jglue.cdi-unit</groupId>
+            <artifactId>cdi-unit</artifactId>
+            <version>3.1.2</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!--PROVIDED DEPENDENCIES-->
+
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>7.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.ws</groupId>
+            <artifactId>jaxws-rt</artifactId>
+            <version>2.2.10</version>
+        </dependency>
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>11.2.0.4</version>
+            <type>jar</type>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -114,6 +150,8 @@
                         <configuration>
                             <bindingFiles>
                                 <bindingFile>${basedir}/src/main/resources/schemas/bindings.xml</bindingFile>
+                                <bindingFile>${basedir}/src/main/resources/schemas/ExtDocBase.xsd</bindingFile>
+                                <bindingFile>${basedir}/src/main/resources/schemas/RecallDocBase.xsd</bindingFile>
                             </bindingFiles>
                             <wsdlUrls>
                                 <wsdlUrl>
@@ -125,31 +163,101 @@
                 </executions>
             </plugin>
             <!--<plugin>-->
-                <!--<groupId>org.apache.cxf</groupId>-->
-                <!--<artifactId>cxf-codegen-plugin</artifactId>-->
-                <!--<version>3.0.4</version>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>generate-sources</id>-->
-                        <!--<phase>generate-sources</phase>-->
-                        <!--<configuration>-->
-                            <!--<sourceRoot>${project.basedir}/src/main/java/</sourceRoot>-->
-                            <!--<wsdlOptions>-->
-                                <!--<wsdlOption>-->
-                                    <!--<wsdl>http://murom.red-soft.biz:8090/fssp-mvv/smev25/1.1?wsdl</wsdl>-->
-                                    <!--<bindingFiles>-->
-                                        <!--<bindingFile>${basedir}/src/main/resources/schemas/bindings.xml</bindingFile>-->
-                                    <!--</bindingFiles>-->
-                                <!--</wsdlOption>-->
-                            <!--</wsdlOptions>-->
-                        <!--</configuration>-->
-                        <!--<goals>-->
-                            <!--<goal>wsdl2java</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                <!--</executions>-->
+            <!--<groupId>org.apache.cxf</groupId>-->
+            <!--<artifactId>cxf-xjc-plugin</artifactId>-->
+            <!--<version>3.0.1</version>-->
+            <!--<configuration>-->
+            <!--<extensions>-->
+            <!--<extension>org.apache.cxf.xjcplugins:cxf-xjc-dv:3.0.1</extension>-->
+            <!--</extensions>-->
+            <!--</configuration>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<id>generate-sources</id>-->
+            <!--<phase>generate-sources</phase>-->
+            <!--<goals>-->
+            <!--<goal>xsdtojava</goal>-->
+            <!--</goals>-->
+            <!--<configuration>-->
+            <!--<sourceRoot>${basedir}/src/main/java/com/impulsm/fns/egrul/</sourceRoot>-->
+            <!--<xsdOptions>-->
+            <!--&lt;!&ndash;<xsdOption>&ndash;&gt;-->
+            <!--&lt;!&ndash;<xsd>src/main/resources/fns_service/egrul_short.xsd</xsd>&ndash;&gt;-->
+            <!--&lt;!&ndash;</xsdOption>&ndash;&gt;-->
+            <!--<xsdOption>-->
+            <!--<xsd>src/main/resources/fns_service/egrul_short_response.xsd</xsd>-->
+            <!--</xsdOption>-->
+            <!--</xsdOptions>-->
+            <!--</configuration>-->
+            <!--</execution>-->
+            <!--</executions>-->
             <!--</plugin>-->
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
     </build>
 
+    <profiles>
+        <profile>
+            <id>development</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <!--    ClientInfo  -->
+                <client.username>GIBDD_LDRM</client.username>
+                <client.password>U5163C0E1A90929B1</client.password>
+                <client.ip>172.20.255.8</client.ip>
+                <client.ogai.code>46608</client.ogai.code>
+                <client.schema>GIBDD_APR</client.schema>
+                <!--    ServerInfo  -->
+                <arm.code>35</arm.code>
+                <arm.version>${project.version}</arm.version>
+                <arm.server.ip>172.20.255.8</arm.server.ip>
+                <!--    Database Settings   -->
+                <database.url>jdbc:oracle:thin:@172.20.255.4:1521:testcbd</database.url>
+                <database.pool.size>2</database.pool.size>
+                <database.query.timeout>3600</database.query.timeout>
+                <database.type>ORACLE</database.type>
+                <!--APPLICATION CONFIG-->
+                <app.project_stage>DEVELOPMENT</app.project_stage>
+            </properties>
+        </profile>
+        <profile>
+            <id>moscow</id>
+            <properties>
+                <!--    ClientInfo  -->
+                <client.username>GIBDD_LDRM</client.username>
+                <client.password>U5163C0E1A90929B1</client.password>
+                <client.ip>10.11.29.70</client.ip>
+                <client.ogai.code>46608</client.ogai.code>
+                <client.schema>GIBDD_APR</client.schema>
+                <!--    ServerInfo  -->
+                <arm.code>35</arm.code>
+                <arm.version>${project.version}</arm.version>
+                <arm.server.ip>10.11.29.70</arm.server.ip>
+                <!--    Database Settings   -->
+                <database.url>
+                    jdbc:oracle:thin:@(DESCRIPTION=(LOAD_BALANCE=on)(ADDRESS=(PROTOCOL=TCP)(HOST=10.11.29.111)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=10.11.29.112)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=gaicbd.msk.local)))
+                </database.url>
+                <database.pool.size>2</database.pool.size>
+                <database.query.timeout>3600</database.query.timeout>
+                <database.type>ORACLE</database.type>
+                <!--APPLICATION CONFIG-->
+                <app.project_stage>PRODUCTION</app.project_stage>
+            </properties>
+        </profile>
+    </profiles>
+
+    <repositories>
+        <repository>
+            <id>Impulsm</id>
+            <name>Impulsm</name>
+            <url>http://172.20.255.2:9090/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
 </project>
