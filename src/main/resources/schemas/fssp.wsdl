@@ -175,8 +175,8 @@
     </wsdl:binding>
     <wsdl:service name="NCoreDxSmev25Service">
         <wsdl:port binding="tns:NCoreDxSmev25Binding" name="NCoreDxSmev25Port">
-            <!--<soap:address location="http://murom.red-soft.biz:8090/fssp-mvv/smev25/1.1"/>-->
-           <soap:address location="http://10.11.32.135:9012/gateway/services/SID0003127"/>
+            <soap:address location="http://murom.red-soft.biz:8090/fssp-mvv/smev25/1.1"/>
+           <!--<soap:address location="http://10.11.32.135:9012/gateway/services/SID0003127"/>-->
             <!--
             wsa10:EndpointReference>
                     <wsa10:Address>http://localhost:8080/</wsa10:Address>
