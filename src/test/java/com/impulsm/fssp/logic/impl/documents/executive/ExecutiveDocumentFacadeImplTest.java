@@ -2,6 +2,7 @@ package com.impulsm.fssp.logic.impl.documents.executive;
 
 import com.impulsm.database.datasource.OracleDataSource;
 import com.impulsm.fssp.logic.api.documents.executive.IExecutiveDocumentFacade;
+import com.impulsm.fssp.models.documents.extdoc.ExtDocCursor;
 import com.impulsm.fssp.utils.impl.DefaultXMLSerializer;
 import com.impulsm.fssp.utils.impl.FSSPSignatureUtilImpl;
 import org.jglue.cdiunit.AdditionalClasses;
@@ -35,10 +36,17 @@ public class ExecutiveDocumentFacadeImplTest {
 
     @Test
     @InRequestScope
-    public void testGetCursorWithExecutiveDocumentsForRegistry() throws Exception {
+    public void testGetNextExecutiveDocumentFromCursor() throws Exception {
+        try(ExtDocCursor resultSet = facade.getCursorWithExecutiveDocumentsForRegistry(new BigDecimal("214807"));){
+            facade.getNextExecutiveDocumentFromCursor(resultSet);
+        }
+    }
 
-        ResultSet resultSet = facade.getCursorWithExecutiveDocumentsForRegistry(new BigDecimal("214807"));
-        assertThat("result set not null", resultSet, notNullValue());
-
+    @Test
+    @InRequestScope
+    public void testGetCursorWithExecutiveDocumentsForRegistry1() throws Exception {
+        try(ExtDocCursor resultSet = facade.getCursorWithExecutiveDocumentsForRegistry(new BigDecimal("214807"));) {
+            assertThat("result set not null", resultSet, notNullValue());
+        }
     }
 }

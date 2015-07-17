@@ -3,6 +3,7 @@ package com.impulsm.fssp.logic.impl.documents.executive;
 import com.impulsm.fssp.logic.api.documents.executive.IExecutiveDocumentFacade;
 import com.impulsm.fssp.logic.api.documents.executive.IExecutiveDocumentsHandler;
 import com.impulsm.fssp.logic.api.documents.executive.IPackHandler;
+import com.impulsm.fssp.models.documents.extdoc.ExtDocCursor;
 import com.impulsm.fssp.models.documents.extdoc.ExtendedExtDoc;
 import com.impulsm.fssp.models.documents.extdoc.SendingStatistics;
 import org.slf4j.Logger;
@@ -27,7 +28,7 @@ public class ExecutiveDocumentsHandlerImpl implements IExecutiveDocumentsHandler
     @Override
     public SendingStatistics sendAllExecutiveDocumentsForRegistry(BigDecimal registryId){
 
-        try (ResultSet cursor = executiveDocumentFacade.getCursorWithExecutiveDocumentsForRegistry(registryId)) {
+        try (ExtDocCursor cursor = executiveDocumentFacade.getCursorWithExecutiveDocumentsForRegistry(registryId)) {
 
             ExtendedExtDoc doc;
 

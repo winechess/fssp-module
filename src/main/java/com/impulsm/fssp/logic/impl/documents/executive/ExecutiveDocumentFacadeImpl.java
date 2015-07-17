@@ -8,6 +8,7 @@ import biz.red_soft.schemas.fssp.common._2011._0.TransportDataType;
 import com.impulsm.database.datasource.IDataSource;
 import com.impulsm.fssp.logic.api.documents.executive.IExecutiveDocumentBaseFacade;
 import com.impulsm.fssp.logic.api.documents.executive.IExecutiveDocumentFacade;
+import com.impulsm.fssp.models.documents.extdoc.ExtDocCursor;
 import com.impulsm.fssp.models.documents.extdoc.ExtendedExtDoc;
 import com.impulsm.fssp.utils.api.IFSSPSignatureUtil;
 import com.impulsm.fssp.utils.api.IXMLSerializer;
@@ -47,7 +48,7 @@ public class ExecutiveDocumentFacadeImpl implements IExecutiveDocumentFacade {
     IFSSPSignatureUtil signatureUtil;
 
     @Override
-    public ExtendedExtDoc getNextExecutiveDocumentFromCursor(ResultSet cursor) throws Exception {
+    public ExtendedExtDoc getNextExecutiveDocumentFromCursor(ExtDocCursor cursor) throws Exception {
 
         if (cursor == null) {
             throw new IllegalArgumentException("Курсор не передан.");
@@ -56,19 +57,27 @@ public class ExecutiveDocumentFacadeImpl implements IExecutiveDocumentFacade {
         if (!cursor.next()) {
             return null;
         }
-        return generateDocFromCursor(cursor);
+        return generateDocFromCursor(cursor.getCursor());
     }
 
     @Override
-    public ResultSet getCursorWithExecutiveDocumentsForRegistry(BigDecimal registryId) throws Exception {
-        try (Connection connection = ds.getConnection();
-             CallableStatement cs = connection.prepareCall(GET_ISP_DOCS)) {
-
+    public ExtDocCursor getCursorWithExecutiveDocumentsForRegistry(BigDecimal registryId) throws Exception {
+        ExtDocCursor cursor = new ExtDocCursor();
+        try {
+            Connection connection = ds.getConnection();
+            cursor.setConnection(connection);
+            CallableStatement cs = connection.prepareCall(GET_ISP_DOCS);
+            cursor.setStatement(cs);
             cs.setBigDecimal(1, registryId);
             cs.registerOutParameter(2, OracleTypes.CURSOR);
             cs.execute();
 
-            return (ResultSet) cs.getObject(2);
+            cursor.setCursor((ResultSet) cs.getObject(2));
+            return cursor;
+        }catch(Exception ex){
+            logger.error("Ошибка получения курсора с исполнительными документами.");
+            cursor.close();
+            return null;
         }
     }
 

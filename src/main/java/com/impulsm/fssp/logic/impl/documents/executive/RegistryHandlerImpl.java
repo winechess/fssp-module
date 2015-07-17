@@ -31,7 +31,7 @@ public class RegistryHandlerImpl implements IRegistryHandler {
         }
     }
 
-    public void handleRegistry(BigDecimal registryId) {
+    private void handleRegistry(BigDecimal registryId) {
 
         SendingStatistics statistics = new SendingStatistics(0, 0);
         BigDecimal unloadId = registryFacade.initRegistryUnload(registryId);
