@@ -11,6 +11,7 @@ public class FSSPSignatureUtilImplTest {
 
     @Test
     public void testPkcs7sign() throws Exception {
+        FSSPSignatureUtilImpl signatureUtil = new FSSPSignatureUtilImpl();
 
     }
 }
