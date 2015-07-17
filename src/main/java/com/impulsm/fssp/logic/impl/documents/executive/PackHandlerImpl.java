@@ -78,7 +78,7 @@ public class PackHandlerImpl implements IPackHandler {
             packs.clear();
         }
         DXPack dxPack;
-        switch(ApplicationConfig.PROJECT_STAGE){
+        switch(new ApplicationConfig().PROJECT_STAGE){
             case PRODUCTION:
                 dxPack = generator.createDXPack(doc.getPackId(), doc.getOgaiCode(), doc.getFsspCode());
                 break;
