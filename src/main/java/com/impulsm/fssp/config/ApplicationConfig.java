@@ -12,12 +12,12 @@ import java.util.Properties;
  */
 public class ApplicationConfig {
 
-    public static final ProjectStage PROJECT_STAGE;
+    public final ProjectStage PROJECT_STAGE;
     private final static Logger logger = LoggerFactory.getLogger(ApplicationConfig.class);
 
-    static {
+    public ApplicationConfig() {
         String projectStage = null;
-        try (InputStream is = ApplicationConfig.class.getClass().getResourceAsStream("application.properties")) {
+        try (InputStream is = getClass().getClassLoader().getResourceAsStream("application.properties")) {
             Properties p = new Properties();
             p.load(is);
             projectStage = p.getProperty("PROJECT_STAGE");
@@ -26,6 +26,5 @@ public class ApplicationConfig {
         }
         PROJECT_STAGE = ProjectStage.valueOf(projectStage);
     }
-
 
 }

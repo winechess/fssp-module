@@ -2,6 +2,7 @@ package com.impulsm.fssp.utils.impl;
 
 import biz.red_soft.ncore.dx._1.*;
 import biz.red_soft.ncore.dx._1.ObjectFactory;
+import biz.red_soft.schemas.fssp.common._2011._0.ExtDoc;
 import com.impulsm.fssp.models.documents.extdoc.ExtendedExtDoc;
 import com.impulsm.fssp.utils.api.IFsspStructuresGenerator;
 import com.sun.xml.ws.api.message.Header;
@@ -138,12 +139,14 @@ public class FsspStructuresGeneratorImpl implements IFsspStructuresGenerator {
         env.setId(doc.getEnvelopeId());
         env.setDocument(createDocument(doc));
         env.setDocId(doc.getExternalKey());
+        pack.setEnvelopes(new DXPack.Envelopes());
         pack.getEnvelopes().getEnvelope().add(env);
     }
 
-    private <T> DocumentContainer createDocument(T document) {
+    private DocumentContainer createDocument(ExtDoc document) {
         DocumentContainer doc = new DocumentContainer();
-        doc.setAny(document);
+        JAXBElement<ExtDoc> extDoc = new biz.red_soft.schemas.fssp.common._2011._0.ObjectFactory().createExtDoc(document);
+        doc.setAny(extDoc);
         return doc;
     }
 

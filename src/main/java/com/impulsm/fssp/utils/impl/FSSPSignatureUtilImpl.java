@@ -33,7 +33,7 @@ public class FSSPSignatureUtilImpl implements IFSSPSignatureUtil {
 
     public FSSPSignatureUtilImpl() {
         try {
-            //XmlDSignTools.init();
+            org.apache.xml.security.Init.init();
             pkcs7Cont = new PKCS7Container(new GOSTSignature());
             ks = new Keystore();
             ks.load(KeystoreTypes.RutokenStore);
