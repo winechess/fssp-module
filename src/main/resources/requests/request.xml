@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"
-            xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
             xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
-    <SOAP-ENV:Header>
+    <S:Header>
         <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
                        S:actor="http://smev.gosuslugi.ru/actors/smev">
             <wsse:BinarySecurityToken
@@ -57,11 +57,11 @@
                             <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
                         </Transforms>
                         <DigestMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#gostr3411"/>
-                        <DigestValue>WkzwBMrlM/fofK4RPcaK3eSXt6cIAV4FUugHVAyduTQ=</DigestValue>
+                        <DigestValue>44lyoW/CWDeM3yVP72q8vySXqaGwhVLtE5rwtdyErkQ=</DigestValue>
                     </Reference>
                 </SignedInfo>
-                <SignatureValue>NzHJ/hPyfiHOCyfQsO0nEUxryU0LL5xjq4c22cNFrqVQJTo8912ntuS2uoLqFzjA2/2zFj1GsEDK
-                    Uph32IFgvw==
+                <SignatureValue>/9fwhs9Yzoc8yJz0ao5W9nMbxb81FpmHS3L9ilFO/g2qfExrfP4ikDqlglLi8CiSGsQfHCUq4l/z
+                    HUgNG0coWw==
                 </SignatureValue>
                 <KeyInfo>
                     <wsse:SecurityTokenReference>
@@ -71,9 +71,151 @@
                 </KeyInfo>
             </Signature>
         </wsse:Security>
-    </SOAP-ENV:Header>
+        <Header xmlns="http://smev.gosuslugi.ru/rev120315">
+            <NodeId>7e51cedd-19a4-4450-a0b8-cb3b658caac5</NodeId>
+            <MessageId>727a4f0b-1c28-408b-9d03-9e146c4081d2</MessageId>
+            <TimeStamp>2015-07-17T00:31:58.640+03:00</TimeStamp>
+            <MessageClass>REQUEST</MessageClass>
+        </Header>
+    </S:Header>
     <S:Body wsu:Id="body">
-        <ns7:DXSmev
-                xmlns:ns7="http://www.red-soft.biz/ncore/dx/1.1/smev25/ws"/>
+        <ns9:DXSmev xmlns:ns2="http://www.red-soft.biz/ncore/dx/1.1" xmlns:ns3="http://www.w3.org/2000/09/xmldsig#"
+                    xmlns:ns4="http://www.fssprus.ru/namespace/id/2013/3"
+                    xmlns:ns5="http://www.red-soft.biz/schemas/fssp/common/2011/0.5"
+                    xmlns:ns6="http://www.fssprus.ru/namespace/incoming/2013/1"
+                    xmlns:ns7="http://smev.gosuslugi.ru/rev120315" xmlns:ns8="http://www.w3.org/2004/08/xop/include"
+                    xmlns:ns9="http://www.red-soft.biz/ncore/dx/1.1/smev25/ws">
+            <ns7:Message>
+                <ns7:Sender>
+                    <ns7:Code>835801771</ns7:Code>
+                    <ns7:Name>ГИБДД МОСКВЫ</ns7:Name>
+                </ns7:Sender>
+                <ns7:Recipient>
+                    <ns7:Code>FSSP01001</ns7:Code>
+                    <ns7:Name>ФССП России</ns7:Name>
+                </ns7:Recipient>
+                <ns7:TypeCode>GFNC</ns7:TypeCode>
+                <ns7:Status>REQUEST</ns7:Status>
+                <ns7:Date>2015-07-17T00:31:58.640+03:00</ns7:Date>
+                <ns7:ExchangeType>2</ns7:ExchangeType>
+            </ns7:Message>
+            <ns7:MessageData>
+                <ns7:AppData>
+                    <ns2:DXBox>
+                        <ns2:DXControl id="450f3513-dc3a-452c-ac7f-5e2593edac09"
+                                       time_sent="2015-07-17T00:31:58.640+03:00">
+                            <ns2:Direction>
+                                <ns2:Sender>
+                                    <ns2:Org>УГИБДДМСК</ns2:Org>
+                                    <ns2:Dept>1145519</ns2:Dept>
+                                </ns2:Sender>
+                                <ns2:Recipient>
+                                    <ns2:Org>ФССП</ns2:Org>
+                                    <ns2:Dept>МВВ</ns2:Dept>
+                                </ns2:Recipient>
+                                <ns2:Protocol>общее_0.5</ns2:Protocol>
+                            </ns2:Direction>
+                            <ns2:Pack>
+                                <ns2:MaxCount>0</ns2:MaxCount>
+                            </ns2:Pack>
+                        </ns2:DXControl>
+                        <ns2:DXPack id="1888#1">
+                            <ns2:Direction>
+                                <ns2:Sender>
+                                    <ns2:Org>УГИБДДМСК</ns2:Org>
+                                    <ns2:Dept>46608</ns2:Dept>
+                                </ns2:Sender>
+                                <ns2:Recipient>
+                                    <ns2:Org>ФССП</ns2:Org>
+                                    <ns2:Dept>33021</ns2:Dept>
+                                </ns2:Recipient>
+                            </ns2:Direction>
+                            <ns2:Envelopes>
+                                <ns2:Envelope doc_id="46608#18810250156080000277#218902" id="218902#1">
+                                    <ns2:Document>
+                                        <ns5:ExtDoc>
+                                            <ExternalKey>46608#18810250156080000277#218902</ExternalKey>
+                                            <DocDate>2015-05-01</DocDate>
+                                            <BarCode>131050000004OWM</BarCode>
+                                            <IDType>3</IDType>
+                                            <IDNum>18810250156080000277</IDNum>
+                                            <IDDate>2015-05-01</IDDate>
+                                            <DeloNum>18810250156080000277</DeloNum>
+                                            <DeloDate>2015-02-03</DeloDate>
+                                            <OrganCode>22</OrganCode>
+                                            <Organ>Тест.Бат. ДПС 2 Полка ДПС (Южный) ГИБДД ГУ МВД России по МО</Organ>
+                                            <OrganAdr>643,124460,77,,,ЗЕЛЕНОГРАД Г. АЛАБУШЕВО П,КОЛХОЗНАЯ УЛ,1,,
+                                            </OrganAdr>
+                                            <OrganSignPost>Инспектор</OrganSignPost>
+                                            <OrganSignFIO>Чамов Дмитрий Витальевич</OrganSignFIO>
+                                            <AktDate>2015-02-14</AktDate>
+                                            <DebtorType>2</DebtorType>
+                                            <DebtorName>Хайретдинова Эльмира Халитовна</DebtorName>
+                                            <DebtorFIO>
+                                                <Surname>ХАЙРЕТДИНОВА</Surname>
+                                                <FirstName>ЭЛЬМИРА</FirstName>
+                                                <Patronymic>ХАЛИТОВНА</Patronymic>
+                                            </DebtorFIO>
+                                            <DebtorAdr>643,127560,77,,,,ПЛЕЩЕЕВА УЛ,6,,57</DebtorAdr>
+                                            <DebtorBirthDate>1985-02-04</DebtorBirthDate>
+                                            <DebtorBirthYear>1985</DebtorBirthYear>
+                                            <DebtorBirthPlace>Г. МОСКВА</DebtorBirthPlace>
+                                            <ClaimerType>22</ClaimerType>
+                                            <ClaimerName>Тест.Бат. ДПС 2 Полка ДПС (Южный) ГИБДД ГУ МВД России по МО
+                                            </ClaimerName>
+                                            <ClaimerAdr>643,124460,77,,,ЗЕЛЕНОГРАД Г. АЛАБУШЕВО П,КОЛХОЗНАЯ УЛ,1,,
+                                            </ClaimerAdr>
+                                            <IDSubj>37</IDSubj>
+                                            <IDSubjName>Штраф гибдд</IDSubjName>
+                                            <IDSum>5000.00</IDSum>
+                                            <DebtorEstate>03.02.2015 года в 11:10 по адресу ул.Колхозная, д.1, п.
+                                                Алабушево, г. Зеленоград, Силино р-н, г. Москва водитель Хайретдинова
+                                                Эльмира Халитовна, управляя ТС марки АУДИ Q5, рег.знак Х100ХР97. В
+                                                действиях ЛВОКа имеется состав административного правонарушения,
+                                                предусмотренного ч.2 ст.12.2 КРФоАП.
+                                            </DebtorEstate>
+                                            <SrokDobrPFR>2015-07-17</SrokDobrPFR>
+                                            <KoAPArticle>12.2</KoAPArticle>
+                                            <KoAPPart>2</KoAPPart>
+                                            <IDBase>
+                                                PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/Pgo8SUlkIHhtbG5zPSJodHRwOi8vd3d3LmZzc3BydXMucnUvbmFtZXNwYWNlL2lkLzIwMTMvMyI+CiAgICA8RXh0ZXJuYWxLZXk+NDY2MDgjMTg4MTAyNTAxNTYwODAwMDAyNzcjMjE4OTAyPC9FeHRlcm5hbEtleT4KICAgIDxCYXJDb2RlPjEzMTA1MDAwMDAwNE9XTTwvQmFyQ29kZT4KICAgIDxJRFR5cGU+MzwvSURUeXBlPgogICAgPElETnVtPjE4ODEwMjUwMTU2MDgwMDAwMjc3PC9JRE51bT4KICAgIDxJRERvY0RhdGU+MjAxNS0wNS0wMTwvSUREb2NEYXRlPgogICAgPERlbG9OdW0+MTg4MTAyNTAxNTYwODAwMDAyNzc8L0RlbG9OdW0+CiAgICA8RGVsb1BsYWNlPtCi0LXRgdGCLtCR0LDRgi4g0JTQn9ChIDIg0J/QvtC70LrQsCDQlNCf0KEgKNCu0LbQvdGL0LkpINCT0JjQkdCU0JQg0JPQoyDQnNCS0JQg0KDQvtGB0YHQuNC4INC/0L4g0JzQnjwvRGVsb1BsYWNlPgogICAgPElERGVzRGF0ZT4yMDE1LTAyLTAzPC9JRERlc0RhdGU+CiAgICA8QWt0RGF0ZT4yMDE1LTAyLTE0PC9Ba3REYXRlPgogICAgPFNyb2tQcklzcD4yPC9Tcm9rUHJJc3A+CiAgICA8U3Jva1BySXNwVHlwZT4zPC9Tcm9rUHJJc3BUeXBlPgogICAgPFNyb2tEb2JyPjIwMTUtMDctMTc8L1Nyb2tEb2JyPgogICAgPElzaW1tZWRpYXRlPnRydWU8L0lzaW1tZWRpYXRlPgogICAgPERlYnRvckVzdGF0ZT4wMy4wMi4yMDE1INCz0L7QtNCwINCyIDExOjEwINC/0L4g0LDQtNGA0LXRgdGDINGD0Lsu0JrQvtC70YXQvtC30L3QsNGPLCDQtC4xLCDQvy4g0JDQu9Cw0LHRg9GI0LXQstC+LCDQsy4g0JfQtdC70LXQvdC+0LPRgNCw0LQsINCh0LjQu9C40L3QviDRgC3QvSwg0LMuINCc0L7RgdC60LLQsCDQstC+0LTQuNGC0LXQu9GMINCl0LDQudGA0LXRgtC00LjQvdC+0LLQsCDQrdC70YzQvNC40YDQsCDQpdCw0LvQuNGC0L7QstC90LAsINGD0L/RgNCw0LLQu9GP0Y8g0KLQoSDQvNCw0YDQutC4INCQ0KPQlNCYIFE1LCDRgNC10LMu0LfQvdCw0Log0KUxMDDQpdCgOTcuINCSINC00LXQudGB0YLQstC40Y/RhSDQm9CS0J7QmtCwINC40LzQtdC10YLRgdGPINGB0L7RgdGC0LDQsiDQsNC00LzQuNC90LjRgdGC0YDQsNGC0LjQstC90L7Qs9C+INC/0YDQsNCy0L7QvdCw0YDRg9GI0LXQvdC40Y8sINC/0YDQtdC00YPRgdC80L7RgtGA0LXQvdC90L7Qs9C+INGHLjIg0YHRgi4xMi4yINCa0KDQpNC+0JDQny48L0RlYnRvckVzdGF0ZT4KICAgIDxTcm9rQXBwZWFsPjEwPC9Tcm9rQXBwZWFsPgogICAgPEFwcGVhbFBlcmlvZFR5cGU+MTwvQXBwZWFsUGVyaW9kVHlwZT4KICAgIDxPcmRlckFwcGVhbD7QmtC+0JDQn1/QodCiMzAuMjwvT3JkZXJBcHBlYWw+CiAgICA8RHVwbGljYXRlPmZhbHNlPC9EdXBsaWNhdGU+CiAgICA8T3JnYW5PS09HVT4xMzEwNTAwPC9Pcmdhbk9LT0dVPgogICAgPE9yZ2FuQ29kZT4xMTQ2NjA4PC9PcmdhbkNvZGU+CiAgICA8T3JnYW4+0KLQtdGB0YIu0JHQsNGCLiDQlNCf0KEgMiDQn9C+0LvQutCwINCU0J/QoSAo0K7QttC90YvQuSkg0JPQmNCR0JTQlCDQk9CjINCc0JLQlCDQoNC+0YHRgdC40Lgg0L/QviDQnNCePC9Pcmdhbj4KICAgIDxPcmdhbkFkcj42NDMsMTI0NDYwLDc3LCws0JfQldCb0JXQndCe0JPQoNCQ0JQg0JMuINCQ0JvQkNCR0KPQqNCV0JLQniDQnyzQmtCe0JvQpdCe0JfQndCQ0K8g0KPQmywxLCw8L09yZ2FuQWRyPgogICAgPE9yZ2FuU2lnbkNvZGVQb3N0PjIyODk2PC9PcmdhblNpZ25Db2RlUG9zdD4KICAgIDxPcmdhblNpZ24+0JjQvdGB0L/QtdC60YLQvtGAPC9PcmdhblNpZ24+CiAgICA8T3JnYW5TaWduRklPPtCn0LDQvNC+0LIg0JTQvNC40YLRgNC40Lkg0JLQuNGC0LDQu9GM0LXQstC40Yc8L09yZ2FuU2lnbkZJTz4KICAgIDxJRFN1YmpDb2RlPjExNTAxMDA8L0lEU3ViakNvZGU+CiAgICA8SURTdWJqTmFtZT7QqNGC0YDQsNGEINCz0LjQsdC00LQ8L0lEU3Viak5hbWU+CiAgICA8Q29udGV4dD7QndCw0LfQvdCw0YfQuNGC0Ywg0YHQvtCx0YHRgtCy0LXQvdC90LjQutGDICjQstC70LDQtNC10LvRjNGG0YMpINGC0YDQsNC90YHQv9C+0YDRgtC90L7Qs9C+INGB0YDQtdC00YHRgtCy0LAg0LDQtNC80LjQvdC40YHRgtGA0LDRgtC40LLQvdC+0LUg0L3QsNC60LDQt9Cw0L3QuNC1INCyINCy0LjQtNC1INCw0LTQvNC40L3QuNGB0YLRgNCw0YLQuNCy0L3QvtCz0L4g0YjRgtGA0LDRhNCwINCyINGA0LDQt9C80LXRgNC1IDUwMDAg0YDRg9CxLiDQlNC+0LrRg9C80LXQvdGCLCDRgdCy0LjQtNC10YLQtdC70YzRgdGC0LLRg9GO0YnQuNC5INC+0LEg0YPQv9C70LDRgtC1INCw0LTQvNC40L3QuNGB0YLRgNCw0YLQuNCy0L3QvtCz0L4g0YjRgtGA0LDRhNCwLCDQuCDQuNC90YTQvtGA0LzQsNGG0LjRjyDQvtCxINGD0L/Qu9Cw0YLQtSDQsNC00LzQuNC90LjRgdGC0YDQsNGC0LjQstC90L7Qs9C+INGI0YLRgNCw0YTQsCDQsiDQk9C+0YHRg9C00LDRgNGB0YLQstC10L3QvdC+0Lkg0LjQvdGE0L7RgNC80LDRhtC40L7QvdC90L7QuSDRgdC40YHRgtC10LzQtSDQviDQs9C+0YHRg9C00LDRgNGB0YLQstC10L3QvdGL0YUg0Lgg0LzRg9C90LjRhtC40L/QsNC70YzQvdGL0YUg0L/Qu9Cw0YLQtdC20LDRhSDQvdCwINC80L7QvNC10L3RgiDQvdCw0L/RgNCw0LLQu9C10L3QuNGPINCyINCk0KHQodCfINC+0YLRgdGD0YLRgdGC0LLRg9GO0YIuPC9Db250ZXh0PgogICAgPElEU3VtPjUwMDAuMDA8L0lEU3VtPgogICAgPElEU3VtQ3VycmVuY3k+NjQzPC9JRFN1bUN1cnJlbmN5PgogICAgPENsYWltZXJOYW1lPtCi0LXRgdGCLtCR0LDRgi4g0JTQn9ChIDIg0J/QvtC70LrQsCDQlNCf0KEgKNCu0LbQvdGL0LkpINCT0JjQkdCU0JQg0JPQoyDQnNCS0JQg0KDQvtGB0YHQuNC4INC/0L4g0JzQnjwvQ2xhaW1lck5hbWU+CiAgICA8Q2xhaW1lcklOTj43NzAyMzAwODcyPC9DbGFpbWVySU5OPgogICAgPENsYWltZXJLUFA+NzcwMjAxMDAxPC9DbGFpbWVyS1BQPgogICAgPENsYWltZXJPR1JOPjEwNDYxMDIwMDA1NzA8L0NsYWltZXJPR1JOPgogICAgPENsYWltZXJBZHI+NjQzLDEyNDQ2MCw3NywsLNCX0JXQm9CV0J3QntCT0KDQkNCUINCTLiDQkNCb0JDQkdCj0KjQldCS0J4g0J8s0JrQntCb0KXQntCX0J3QkNCvINCj0JssMSwsPC9DbGFpbWVyQWRyPgogICAgPERlYnRvck5hbWU+0KXQsNC50YDQtdGC0LTQuNC90L7QstCwINCt0LvRjNC80LjRgNCwINCl0LDQu9C40YLQvtCy0L3QsDwvRGVidG9yTmFtZT4KICAgIDxEZWJ0b3JBZHI+NjQzLDEyNzU2MCw3NywsLCzQn9Cb0JXQqdCV0JXQktCQINCj0JssNiwsNTc8L0RlYnRvckFkcj4KICAgIDxEZWJ0b3JCaXJ0aERhdGU+MTk4NS0wMi0wNDwvRGVidG9yQmlydGhEYXRlPgogICAgPERlYnRvckdlbmRlcj7QltCV0J3QodCa0JjQmTwvRGVidG9yR2VuZGVyPgogICAgPERlYnRvckJpcnRoUGxhY2U+0JMuINCc0J7QodCa0JLQkDwvRGVidG9yQmlydGhQbGFjZT4KICAgIDxEZXRNdnZEYXR1bURvY3VtZW50PgogICAgICAgIDxNdnZEYXR1bVRyYW5zcG9ydD4KICAgICAgICAgICAgPEF1dG9tVHlwZT7Qo9Cd0JjQktCV0KDQodCQ0Js8L0F1dG9tVHlwZT4KICAgICAgICAgICAgPFByb2R1Y2VyPtCQ0KPQlNCYPC9Qcm9kdWNlcj4KICAgICAgICAgICAgPE1vZGVsPlE1PC9Nb2RlbD4KICAgICAgICAgICAgPFJlZ05vPtClMTAw0KXQoDk3PC9SZWdObz4KICAgICAgICAgICAgPERlcHRDb2RlPjExNDUwMDA8L0RlcHRDb2RlPgogICAgICAgICAgICA8QWN0RGF0ZT4yMDE1LTAyLTE0PC9BY3REYXRlPgogICAgICAgIDwvTXZ2RGF0dW1UcmFuc3BvcnQ+CiAgICA8L0RldE12dkRhdHVtRG9jdW1lbnQ+CiAgICA8RGV0SWRQYXltZW50UHJvcGVydGllc0lkPgogICAgICAgIDxJZFBheW1lbnRQcm9wZXJ0aWVzPgogICAgICAgICAgICA8UmVjcE5hbWU+0KPQpNCaINC/0L4g0JzQniAo0KPQk9CY0JHQlNCUINCT0KPQktCUINC/0L4g0JzQnik8L1JlY3BOYW1lPgogICAgICAgICAgICA8T2thdG8+NDY0NjAwMDAwMDA8L09rYXRvPgogICAgICAgICAgICA8T2t0bW8+NDY0NjAwMDAwMDA8L09rdG1vPgogICAgICAgICAgICA8UmVjcElOTj43NzAyMzAwODcyPC9SZWNwSU5OPgogICAgICAgICAgICA8UmVjcEtQUD43NzAyMDEwMDE8L1JlY3BLUFA+CiAgICAgICAgICAgIDxSZWNwQ250PjQwMTAxODEwNjAwMDAwMDEwMTAyPC9SZWNwQ250PgogICAgICAgICAgICA8UmVjcEJhbms+0J7RgtC00LXQu9C10L3QuNC1IOKEljEg0JzQk9Ci0KMg0JHQsNC90LrQsCDQoNC+0YHRgdC40Lgg0LMu0JzQvtGB0LrQstCwIDcwNTwvUmVjcEJhbms+CiAgICAgICAgICAgIDxSZWNwQklLPjA0NDU4MzAwMTwvUmVjcEJJSz4KICAgICAgICAgICAgPFJla3ZTdW0+NTAwMC4wMDwvUmVrdlN1bT4KICAgICAgICAgICAgPEtiaz4xODgxMTYzMDAwMDAxMDAwMDE0MDwvS2JrPgogICAgICAgICAgICA8UG9rUGw+0JDQqDwvUG9rUGw+CiAgICAgICAgICAgIDxVTklGT0NvZGU+MTg4MTAyNTAxNTYwODAwMDAyNzc8L1VOSUZPQ29kZT4KICAgICAgICA8L0lkUGF5bWVudFByb3BlcnRpZXM+CiAgICA8L0RldElkUGF5bWVudFByb3BlcnRpZXNJZD4KPC9JSWQ+Cg==
+                                            </IDBase>
+                                            <SignatureBase>
+                                                MIIKrwYJKoZIhvcNAQcCoIIKoDCCCpwCAQExDDAKBgYqhQMCAgkFADALBgkqhkiG9w0BBwGgggirMIIIpzCCCFagAwIBAgIKOeWvvgACAABckzAIBgYqhQMCAgMwggEwMRgwFgYFKoUDZAESDTExMTc3NDYyMTc5OTUxGjAYBggqhQMDgQMBARIMMDA3NzA2NzUyOTI5MSMwIQYDVQQJDBrQltC40YLQvdCw0Y8g0YPQu9C40YbQsCAxNjEcMBoGCSqGSIb3DQEJARYNbWFpbEB1Y212ZC5ydTELMAkGA1UEBhMCUlUxGzAZBgNVBAgMEjc3INCzLtCc0L7RgdC60LLQsDEVMBMGA1UEBwwM0JzQvtGB0LrQstCwMTIwMAYDVQQKDCnQpNCa0KMgItCT0KbQodC40JfQmCDQnNCS0JQg0KDQvtGB0YHQuNC4IjEdMBsGA1UECwwU0J7QntCa0KHQuNCa0JjQnNCi0KExITAfBgNVBAMMGNCj0KYg0JzQktCUINCg0L7RgdGB0LjQuDAeFw0xNTAxMjMxMTI1MDBaFw0xNjA0MjMxMTQwMDBaMIIB/jEWMBQGBSqFA2QDEgswMzg3NDQzNTQ4MDEYMBYGBSqFA2QBEg0xMDM3NzM5MjkwOTMwMRowGAYIKoUDA4EDAQESDDAwNzcwNzA4OTEwMTEhMB8GCSqGSIb3DQEJARYSZWZyZW1vdl9lbEBtYWlsLnJ1MQswCQYDVQQGEwJSVTEhMB8GA1UECB4YADcANwAgBDMALgAgBBwEPgRBBDoEMgQwMRUwEwYDVQQHHgwEHAQ+BEEEOgQyBDAxRTBDBgNVBAoePAQTBCMAIAQcBBIEFAAgBCAEPgRBBEEEOAQ4ACAEPwQ+ACAEMwQ+BEAEPgQ0BEMAIAQcBD4EQQQ6BDIENTEpMCcGA1UECx4gBCMEPwRABDAEMgQ7BDUEPQQ4BDUAIAQTBBgEEQQUBBQxPTA7BgNVBAMeNAQVBEQEQAQ1BDwEPgQyACAEFQQyBDMENQQ9BDgEOQAgBBsENQQ+BD0EOAQ0BD4EMgQ4BEcxSzBJBgNVBAweQgQXBDAEPAQ1BEEEQgQ4BEIENQQ7BEwAIAQ9BDAERwQwBDsETAQ9BDgEOgQwACAEQwQ/BEAEMAQyBDsENQQ9BDgETzEtMCsGA1UEKh4kBBUEMgQzBDUEPQQ4BDkAIAQbBDUEPgQ9BDgENAQ+BDIEOARHMRcwFQYDVQQEHg4EFQREBEAENQQ8BD4EMjBjMBwGBiqFAwICEzASBgcqhQMCAiQABgcqhQMCAh4BA0MABECP9Ird/GJoUWd59p+3gZYd/LyGwpr2hXjf4BbOeKv9TPyzDd4aIKIMuvpyryvWyeAtprvODYLU+CqM3dxePsw0o4IEfDCCBHgwDgYDVR0PAQH/BAQDAgTwMDAGA1UdJQQpMCcGCCsGAQUFBwMEBgcqhQMCAiIGBggrBgEFBQcDAgYIKoUDBQEYAg8wHQYDVR0OBBYEFDeOudzFaOBG8Q7B03ejJcNcKaDFMIIBcQYDVR0jBIIBaDCCAWSAFDU6ZTbjMUnpcJ7wYUJ9cA83im9AoYIBOKSCATQwggEwMRgwFgYFKoUDZAESDTExMTc3NDYyMTc5OTUxGjAYBggqhQMDgQMBARIMMDA3NzA2NzUyOTI5MSMwIQYDVQQJDBrQltC40YLQvdCw0Y8g0YPQu9C40YbQsCAxNjEcMBoGCSqGSIb3DQEJARYNbWFpbEB1Y212ZC5ydTELMAkGA1UEBhMCUlUxGzAZBgNVBAgMEjc3INCzLtCc0L7RgdC60LLQsDEVMBMGA1UEBwwM0JzQvtGB0LrQstCwMTIwMAYDVQQKDCnQpNCa0KMgItCT0KbQodC40JfQmCDQnNCS0JQg0KDQvtGB0YHQuNC4IjEdMBsGA1UECwwU0J7QntCa0KHQuNCa0JjQnNCi0KExITAfBgNVBAMMGNCj0KYg0JzQktCUINCg0L7RgdGB0LjQuIIQDo7FE3v5nLFBgHufg8NDXzCB7AYDVR0fBIHkMIHhMEqgSKBGhkRodHRwOi8vd3d3LnVjbXZkLnJ1L2NybC8zNTNBNjUzNkUzMzE0OUU5NzA5RUYwNjE0MjdENzAwRjM3OEE2RjQwLmNybDBIoEagRIZCaHR0cDovL2NkcC5tdmQucnUvY3JsLzM1M0E2NTM2RTMzMTQ5RTk3MDlFRjA2MTQyN0Q3MDBGMzc4QTZGNDAuY3JsMEmgR6BFhkNodHRwOi8vY2RwMi5tdmQucnUvY3JsLzM1M0E2NTM2RTMzMTQ5RTk3MDlFRjA2MTQyN0Q3MDBGMzc4QTZGNDAuY3JsMD8GCCsGAQUFBwEBBDMwMTAvBggrBgEFBQcwAoYjaHR0cDovL3d3dy51Y212ZC5ydS9jZXJ0L3VjX212ZC5jcnQwNgYFKoUDZG8ELQwrItCa0YDQuNC/0YLQvtCf0YDQviBDU1AiICjQstC10YDRgdC40Y8gMy42KTArBgNVHRAEJDAigA8yMDE1MDEyMzExMjUwMFqBDzIwMTYwNDIzMTEyNTAwWjAdBgNVHSAEFjAUMAgGBiqFA2RxATAIBgYqhQNkcQIwgesGBSqFA2RwBIHhMIHeDCsi0JrRgNC40L/RgtC+0J/RgNC+IENTUCIgKNCy0LXRgNGB0LjRjyAzLjYpDFMi0KPQtNC+0YHRgtC+0LLQtdGA0Y/RjtGJ0LjQuSDRhtC10L3RgtGAICLQmtGA0LjQv9GC0L7Qn9GA0L4g0KPQpiIg0LLQtdGA0YHQuNC4IDEuNQwt0KHQpC8xMjQtMjIzOCDQvtGCIDA0INC+0LrRgtGP0LHRgNGPIDIwMTMg0LMuDCvQodCkLzEyOC0yMzUxINC+0YIgMTUg0LDQv9GA0LXQu9GPIDIwMTQg0LMuMAgGBiqFAwICAwNBAIi/GjGTwK6vECZyXRCv9YMy0voq3jHwObBmdgfuuO7tIR4Yww38iAxhMwYwlrFCcAXx1G02xSe0S1BOz1Igtz0xggHLMIIBxwIBATCCAUAwggEwMRgwFgYFKoUDZAESDTExMTc3NDYyMTc5OTUxGjAYBggqhQMDgQMBARIMMDA3NzA2NzUyOTI5MSMwIQYDVQQJDBrQltC40YLQvdCw0Y8g0YPQu9C40YbQsCAxNjEcMBoGCSqGSIb3DQEJARYNbWFpbEB1Y212ZC5ydTELMAkGA1UEBhMCUlUxGzAZBgNVBAgMEjc3INCzLtCc0L7RgdC60LLQsDEVMBMGA1UEBwwM0JzQvtGB0LrQstCwMTIwMAYDVQQKDCnQpNCa0KMgItCT0KbQodC40JfQmCDQnNCS0JQg0KDQvtGB0YHQuNC4IjEdMBsGA1UECwwU0J7QntCa0KHQuNCa0JjQnNCi0KExITAfBgNVBAMMGNCj0KYg0JzQktCUINCg0L7RgdGB0LjQuAIKOeWvvgACAABckzAKBgYqhQMCAgkFADAKBgYqhQMCAgQFAARA6KlFCiEMHZQoDFLtWL+gcZ57QeHSJRQq7iQqxngzkIUgwxeFvaEqHxdu4km7sqgMZ46PoVZ9FUp+1CfEA69RSqEkMCIGCSqFAwUBBQIDATEVGBMyMDE1MDcxNjIxMzE1Ni44NjFa
+                                            </SignatureBase>
+                                            <Data>
+                                                <TransportData>
+                                                    <ActDate>2015-02-14</ActDate>
+                                                    <KindData>04</KindData>
+                                                    <AutomType>УНИВЕРСАЛ</AutomType>
+                                                    <RegNo>Х100ХР97</RegNo>
+                                                    <Producer>АУДИ</Producer>
+                                                    <Model>Q5</Model>
+                                                    <DeptCode>1145000</DeptCode>
+                                                </TransportData>
+                                            </Data>
+                                            <PaymentProperties>
+                                                <RecpName>УФК по МО (УГИБДД ГУВД по МО)</RecpName>
+                                                <RecpBank>Отделение №1 МГТУ Банка России г.Москва 705</RecpBank>
+                                                <RecpBIK>044583001</RecpBIK>
+                                                <RecpCnt>40101810600000010102</RecpCnt>
+                                                <RecpINN>7702300872</RecpINN>
+                                                <RecpKPP>770201001</RecpKPP>
+                                                <Okato>46460000000</Okato>
+                                                <Oktmo>46460000000</Oktmo>
+                                                <Kbk>18811630000010000140</Kbk>
+                                                <UNIFOCode>18810250156080000277</UNIFOCode>
+                                                <PokPl>АШ</PokPl>
+                                                <RekvSum>5000.00</RekvSum>
+                                            </PaymentProperties>
+                                        </ns5:ExtDoc>
+                                    </ns2:Document>
+                                </ns2:Envelope>
+                            </ns2:Envelopes>
+                        </ns2:DXPack>
+                    </ns2:DXBox>
+                </ns7:AppData>
+            </ns7:MessageData>
+        </ns9:DXSmev>
     </S:Body>
 </S:Envelope>

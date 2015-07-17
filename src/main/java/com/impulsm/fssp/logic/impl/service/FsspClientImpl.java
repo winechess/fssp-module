@@ -42,7 +42,7 @@ public class FsspClientImpl implements IFsspClient {
     public FsspClientImpl() {
         logger.info("Constructor was called.");
         HttpTransportPipe.dump = true;
-        HttpAdapter.dump_threshold = 8192;
+        HttpAdapter.dump_threshold = 100000;
         port = new NCoreDxSmev25Service().getNCoreDxSmev25Port();
         List<Handler> handlerChain = new ArrayList<>();
         handlerChain.add(new SecurityHandler());
