@@ -130,6 +130,7 @@ public class FsspStructuresGeneratorImpl implements IFsspStructuresGenerator {
         pack.setDirection(new Direction());
         pack.getDirection().setSender(createRedAddress("УГИБДДМСК", ogaiCode));
         pack.getDirection().setRecipient(createRedAddress("ФССП", fsspCode));
+        pack.getDirection().setProtocol("общее_0.5");
         return pack;
     }
 
