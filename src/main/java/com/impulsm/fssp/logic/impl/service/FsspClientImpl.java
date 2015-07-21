@@ -6,6 +6,7 @@ import biz.red_soft.ncore.dx._1_1.smev25.ws.Error;
 import biz.red_soft.ncore.dx._1_1.smev25.ws.NCoreDxSmev25Port;
 import biz.red_soft.ncore.dx._1_1.smev25.ws.NCoreDxSmev25Service;
 import com.impulsm.fssp.handlers.ExtDocHandler;
+import com.impulsm.fssp.handlers.RemoveUnusedNamespacesHandler;
 import com.impulsm.fssp.handlers.SecurityHandler;
 import com.impulsm.fssp.logic.api.service.IFsspClient;
 import com.impulsm.fssp.utils.api.IFsspStructuresGenerator;
@@ -46,6 +47,7 @@ public class FsspClientImpl implements IFsspClient {
         HttpAdapter.dump_threshold = 100000;
         port = new NCoreDxSmev25Service().getNCoreDxSmev25Port();
         List<Handler> handlerChain = new ArrayList<>();
+        handlerChain.add(new RemoveUnusedNamespacesHandler());
         handlerChain.add(new ExtDocHandler());
         handlerChain.add(new SecurityHandler());
         ((BindingProvider) port).getBinding().setHandlerChain(handlerChain);
