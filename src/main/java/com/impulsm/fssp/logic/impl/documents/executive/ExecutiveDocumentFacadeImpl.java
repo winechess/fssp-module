@@ -86,7 +86,7 @@ public class ExecutiveDocumentFacadeImpl implements IExecutiveDocumentFacade {
         ExtendedExtDoc edoc = new ExtendedExtDoc();
 
         edoc.setFsspCode(cursor.getString("ssp_id"));
-        edoc.setOgaiCode(cursor.getBigDecimal("OrganCode").toString());
+        edoc.setOgaiCode(cursor.getString("ogai_kod_canonical"));
         edoc.setSendingId(cursor.getString("sending_id"));
         edoc.setEnvelopeId(cursor.getString("envelope_id"));
         edoc.setPackId(cursor.getString("pack_id"));

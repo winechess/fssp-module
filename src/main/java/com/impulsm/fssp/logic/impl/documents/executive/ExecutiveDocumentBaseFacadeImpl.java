@@ -57,7 +57,7 @@ public class ExecutiveDocumentBaseFacadeImpl implements IExecutiveDocumentBaseFa
 
             extDocBase.setDebtorEstate(cursor.getString("DebtorEstate"));
             extDocBase.setOrganOKOGU(cursor.getString("OrganOKOGU"));
-            extDocBase.setOrganCode(cursor.getString("IId_OrganCode"));
+            extDocBase.setOrganCode(cursor.getString("ogai_kod_canonical"));
             extDocBase.setOrgan(cursor.getString("Organ"));
             extDocBase.setOrganAdr(cursor.getString("OrganAdr"));
             extDocBase.setOrganSignCodePost(cursor.getBigDecimal("OrganSignCodePost"));
