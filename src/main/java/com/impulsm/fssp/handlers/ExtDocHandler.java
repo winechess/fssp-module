@@ -9,7 +9,6 @@ import javax.xml.soap.*;
 import javax.xml.ws.handler.MessageContext;
 import javax.xml.ws.handler.soap.SOAPHandler;
 import javax.xml.ws.handler.soap.SOAPMessageContext;
-import java.io.ByteArrayOutputStream;
 import java.util.Set;
 
 /**
@@ -39,8 +38,6 @@ public class ExtDocHandler implements SOAPHandler<SOAPMessageContext> {
                     ((SOAPElement) list.item(i)).addNamespaceDeclaration(list.item(i).getPrefix(), "http://www.red-soft.biz/schemas/fssp/common/2011/0.5");
                 }
 
-                dumpSOAPMessage(msg);
-
             } catch (SOAPException e) {
                 e.printStackTrace();
             }
@@ -66,35 +63,6 @@ public class ExtDocHandler implements SOAPHandler<SOAPMessageContext> {
     @Override
     public Set<QName> getHeaders() {
         return null;
-    }
-
-    private void dumpSOAPMessage(SOAPMessage msg) {
-        if (msg == null) {
-            System.out.println("SOAP Message is null");
-            return;
-        }
-        System.out.println("");
-        System.out.println("--------------------");
-        System.out.println("DUMP OF SOAP MESSAGE");
-        System.out.println("--------------------");
-        try {
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            msg.writeTo(baos);
-            System.out.println(baos.toString(getMessageEncoding(msg)));
-// show included values
-            String values = msg.getSOAPBody().getTextContent();
-            System.out.println("Included values:" + values);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private String getMessageEncoding(SOAPMessage msg) throws SOAPException {
-        String encoding = "utf-8";
-        if (msg.getProperty(SOAPMessage.CHARACTER_SET_ENCODING) != null) {
-            encoding = msg.getProperty(SOAPMessage.CHARACTER_SET_ENCODING).toString();
-        }
-        return encoding;
     }
 
 }
