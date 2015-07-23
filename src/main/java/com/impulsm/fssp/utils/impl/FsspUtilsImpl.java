@@ -3,6 +3,7 @@ package com.impulsm.fssp.utils.impl;
 import biz.red_soft.ncore.dx._1.DXBlock;
 import biz.red_soft.ncore.dx._1.DXBox;
 import biz.red_soft.ncore.dx._1.ProcessResult;
+import com.impulsm.fssp.models.documents.extdoc.NPAModel;
 import com.impulsm.fssp.utils.api.IFsspUtils;
 import ru.gosuslugi.smev.rev120315.AppDataType;
 import ru.gosuslugi.smev.rev120315.BaseMessageType;
@@ -11,6 +12,8 @@ import ru.gosuslugi.smev.rev120315.MessageDataType;
 import javax.xml.bind.JAXBElement;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by vinichenkosa on 08/07/15.
@@ -92,6 +95,34 @@ public class FsspUtilsImpl implements IFsspUtils {
             throw new IllegalArgumentException("Параметр не может быть null.");
         }
         return packId.startsWith("#");
+    }
+
+    @Override
+    public NPAModel parseStotv(String s) {
+        NPAModel npa = new NPAModel();
+
+        Pattern pattern = Pattern.compile("(п[\\s.]+([\\d.]+))?[\\s]*(ч[\\s.]+([\\d.]+))?[\\s]*(пр[\\s.]+([\\d.]+))?[\\s]*(ст[\\s.]+([\\d.]+))?[\\s]*(пр[\\s.]+([\\d.]+))?[\\s]*");
+        Matcher matcher = pattern.matcher(s);
+        if (matcher.find()) {
+
+
+            String point = matcher.group(2);
+            if (point != null && !point.trim().isEmpty()) {
+                npa.setPoint(point.trim());
+            }
+
+            String part = matcher.group(4);
+            if (part != null && !part.trim().isEmpty()) {
+                npa.setPart(part.trim());
+            }
+
+            String article = matcher.group(8);
+            if (article != null && !article.trim().isEmpty()) {
+                npa.setArticle(article.trim());
+            }
+        }
+
+        return npa;
     }
 
     private String oldPackIdToSendingId(String oldPackId) {
