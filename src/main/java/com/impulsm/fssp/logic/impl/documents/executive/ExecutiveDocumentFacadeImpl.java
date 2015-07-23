@@ -10,7 +10,9 @@ import com.impulsm.fssp.logic.api.documents.executive.IExecutiveDocumentBaseFaca
 import com.impulsm.fssp.logic.api.documents.executive.IExecutiveDocumentFacade;
 import com.impulsm.fssp.models.documents.extdoc.ExtDocCursor;
 import com.impulsm.fssp.models.documents.extdoc.ExtendedExtDoc;
+import com.impulsm.fssp.models.documents.extdoc.NPAModel;
 import com.impulsm.fssp.utils.api.IFSSPSignatureUtil;
+import com.impulsm.fssp.utils.api.IFsspUtils;
 import com.impulsm.fssp.utils.api.IXMLSerializer;
 import com.impulsm.utils.datetime.DateTimeUtil;
 import oracle.jdbc.OracleTypes;
@@ -26,9 +28,6 @@ import javax.inject.Inject;
 import javax.xml.datatype.DatatypeConfigurationException;
 import java.math.BigDecimal;
 import java.sql.*;
-import java.util.HashMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Created by vinichenkosa on 08/07/15.
@@ -46,6 +45,8 @@ public class ExecutiveDocumentFacadeImpl implements IExecutiveDocumentFacade {
     IXMLSerializer xmlSerializer;
     @Inject
     IFSSPSignatureUtil signatureUtil;
+    @Inject
+    IFsspUtils fsspUtils;
 
     @Override
     public ExtendedExtDoc getNextExecutiveDocumentFromCursor(ExtDocCursor cursor) throws Exception {
@@ -173,13 +174,13 @@ public class ExecutiveDocumentFacadeImpl implements IExecutiveDocumentFacade {
         //SrokDobrPFR
         edoc.setSrokDobrPFR(new LocalDate());
 
-        HashMap<String, String> hm = parseStotv(cursor.getString("stotv"));
+        NPAModel stotv = fsspUtils.parseStotv(cursor.getString("stotv"));
         //KoAPArticle
-        edoc.setKoAPArticle(hm.get("article"));
+        edoc.setKoAPArticle(stotv.getArticle());
         //KoAPPart
-        edoc.setKoAPPart(hm.get("part"));
+        edoc.setKoAPPart(stotv.getPart());
         //KoAPPoint
-        edoc.setKoAPPoint(hm.get("point"));
+        edoc.setKoAPPoint(stotv.getPoint());
         //PaymentProperties
         edoc.getPaymentProperties().add(createPaymentProperties(cursor));
         //Создание объекта основания для ИД
@@ -260,36 +261,7 @@ public class ExecutiveDocumentFacadeImpl implements IExecutiveDocumentFacade {
 
     }
 
-    private HashMap<String, String> parseStotv(String s) {
-        //System.out.println("Parse stotv: " + s);
-        Pattern pattern = Pattern.compile("(п[\\s.]+([\\d.]+))?[\\s]*(ч[\\s.]+([\\d.]+))?[\\s]*(пр[\\s.]+([\\d.]+))?[\\s]*(ст[\\s.]+([\\d.]+))?[\\s]*(пр[\\s.]+([\\d.]+))?[\\s]*");
-        HashMap<String, String> hm = new HashMap<>();
-        Matcher matcher = pattern.matcher(s);
-        if (matcher.find()) {
 
-            StringBuilder sb = new StringBuilder("Parsed stotv: ");
-
-            String point = matcher.group(2);
-            if (point != null && !point.trim().isEmpty()) {
-                sb.append("п.").append(point).append(" ");
-                hm.put("point", point.trim());
-            }
-
-            String part = matcher.group(4);
-            if (part != null && !part.trim().isEmpty()) {
-                sb.append("ч.").append(part).append(" ");
-                hm.put("part", part.trim());
-            }
-
-            String article = matcher.group(8);
-            if (article != null && !article.trim().isEmpty()) {
-                sb.append("ст.").append(article).append(" ");
-                hm.put("article", article.trim());
-            }
-        }
-
-        return hm;
-    }
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 }

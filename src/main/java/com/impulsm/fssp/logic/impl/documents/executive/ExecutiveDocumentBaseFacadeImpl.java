@@ -2,15 +2,15 @@ package com.impulsm.fssp.logic.impl.documents.executive;
 
 import biz.red_soft.schemas.fssp.common._2011._0.FioType;
 import com.impulsm.fssp.logic.api.documents.executive.IExecutiveDocumentBaseFacade;
+import com.impulsm.fssp.models.documents.extdoc.NPAModel;
+import com.impulsm.fssp.utils.api.IFsspUtils;
 import com.impulsm.fssp.utils.api.IXMLSerializer;
 import com.impulsm.utils.datetime.DateTimeUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.LocalDate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.fssprus.namespace.id._2013._3.IIdType;
-import ru.fssprus.namespace.id._2013._3.IdPaymentPropertiesType;
-import ru.fssprus.namespace.id._2013._3.MvvDatumTransportType;
+import ru.fssprus.namespace.id._2013._3.*;
 
 import javax.inject.Inject;
 import javax.xml.datatype.DatatypeConfigurationException;
@@ -27,6 +27,8 @@ public class ExecutiveDocumentBaseFacadeImpl implements IExecutiveDocumentBaseFa
     private DateTimeUtil dtUtil;
     @Inject
     private IXMLSerializer ixmlSerializer;
+    @Inject
+    private IFsspUtils fsspUtils;
 
     @Override
     public IIdType getExecutiveDocumentBase(ResultSet cursor) throws Exception {
@@ -126,8 +128,43 @@ public class ExecutiveDocumentBaseFacadeImpl implements IExecutiveDocumentBaseFa
                     break;
             }
 
-            extDocBase.getDetIdPaymentPropertiesId().add(createPaymentProperties(cursor));
+            NPAModel stotv = fsspUtils.parseStotv(cursor.getString("stotv"));
 
+            IIdType.NpaActs npaActs = new IIdType.NpaActs();
+            NpaActType npaAct = new NpaActType();
+            npaAct.setNpaCaption("КоАП РФ");
+            npaAct.setNPAType("1");
+
+            NpaActType.NpaArticleParts npaArticles = new NpaActType.NpaArticleParts();
+            NpaArticleType articleType = new NpaArticleType();
+            articleType.setNpaArticle(stotv.getArticle());
+
+            NpaArticleType.NpaParts npaParts = new NpaArticleType.NpaParts();
+            NpaPartType npaPart = new NpaPartType();
+            npaPart.setNpaPart(stotv.getPart());
+
+            NpaPartType.NpaPoints npaPoints = new NpaPartType.NpaPoints();
+            NpaPointType npaPoint = new NpaPointType();
+            npaPoint.setNpaPoint(stotv.getPoint());
+
+//            NpaPointType.NpaSubpoints npaSubpoints = new NpaPointType.NpaSubpoints();
+//            NpaSubpointType npaSubpoint = new NpaSubpointType();
+//            npaSubpoint.setNpaSubpoint("подпункт");
+//            npaSubpoints.setNpaSubpoint(npaSubpoint);
+//            npaPoint.getNpaSubpoints().add(npaSubpoints)
+
+            npaPoints.setNpaPoint(npaPoint);
+            npaPart.getNpaPoints().add(npaPoints);
+
+            npaParts.setNpaPart(npaPart);
+            articleType.getNpaParts().add(npaParts);
+
+            npaArticles.setNpaArticle(articleType);
+
+            npaAct.getNpaArticleParts().add(npaArticles);
+            npaActs.setNpaAct(npaAct);
+            extDocBase.getNpaActs().add(npaActs);
+            extDocBase.getDetIdPaymentPropertiesId().add(createPaymentProperties(cursor));
             extDocBase.getDetMvvDatumDocument().add(createMvvDatumTransport(cursor));
             return extDocBase;
 
