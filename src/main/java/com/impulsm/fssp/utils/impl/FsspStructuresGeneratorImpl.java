@@ -94,7 +94,7 @@ public class FsspStructuresGeneratorImpl implements IFsspStructuresGenerator {
         dxControl.setDirection(new Direction());
         dxControl.getDirection().setProtocol("общее_0.5");
         dxControl.getDirection().setRecipient(createRedAddress("ФССП", "МВВ"));
-        //dxControl.getDirection().setSender(createRedAddress("УГИБДДМСК", "1145519")); убрано согласно письму от 20.07.2015
+        dxControl.getDirection().setSender(createRedAddress("УГИБДДМСК", null));//убран код подразделения согласно письму от 20.07.2015
         //Pack
         dxControl.setPack(createDXControlPack(packMaxCount));
         return dxControl;
