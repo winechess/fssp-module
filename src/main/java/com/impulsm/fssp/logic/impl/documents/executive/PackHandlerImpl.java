@@ -34,6 +34,8 @@ public class PackHandlerImpl implements IPackHandler {
     ISendingFacade sendingFacade;
     @Inject
     IFsspUtils fsspUtils;
+    @Inject
+    ApplicationConfig config;
 
     private Map<String, DXPack> packs = new HashMap<>();
     private int totalDocsToSend = 0;
@@ -78,12 +80,12 @@ public class PackHandlerImpl implements IPackHandler {
             packs.clear();
         }
         DXPack dxPack;
-        switch(new ApplicationConfig().PROJECT_STAGE){
+        switch(config.getPROJECT_STAGE()){
             case PRODUCTION:
                 dxPack = generator.createDXPack(doc.getPackId(), doc.getOgaiCode(), doc.getFsspCode());
                 break;
             default:
-                dxPack = generator.createDXPack(doc.getPackId(), doc.getOgaiCode(), "33021");
+                dxPack = generator.createDXPack(doc.getPackId(), "1145000", "33021");
                 break;
         }
         packs.put(doc.getPackId(), dxPack);

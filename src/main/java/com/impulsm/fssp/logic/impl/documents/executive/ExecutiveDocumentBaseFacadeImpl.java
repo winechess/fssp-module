@@ -1,6 +1,7 @@
 package com.impulsm.fssp.logic.impl.documents.executive;
 
 import biz.red_soft.schemas.fssp.common._2011._0.FioType;
+import com.impulsm.fssp.config.ApplicationConfig;
 import com.impulsm.fssp.logic.api.documents.executive.IExecutiveDocumentBaseFacade;
 import com.impulsm.fssp.models.documents.extdoc.NPAModel;
 import com.impulsm.fssp.utils.api.IFsspUtils;
@@ -30,6 +31,8 @@ public class ExecutiveDocumentBaseFacadeImpl implements IExecutiveDocumentBaseFa
     private IXMLSerializer ixmlSerializer;
     @Inject
     private IFsspUtils fsspUtils;
+    @Inject
+    ApplicationConfig config;
 
     @Override
     public IIdType getExecutiveDocumentBase(ResultSet cursor) throws Exception {
@@ -44,7 +47,6 @@ public class ExecutiveDocumentBaseFacadeImpl implements IExecutiveDocumentBaseFa
             extDocBase.setIDNum(cursor.getString("IDNum"));
             extDocBase.setIDDocDate(dtUtil.toJodaLocalDate(cursor.getDate("IDDocDate")));
             extDocBase.setDeloNum(cursor.getString("DeloNum"));
-            extDocBase.setDeloPlace(cursor.getString("DeloPlace"));
             extDocBase.setIDDesDate(dtUtil.toJodaLocalDate(cursor.getDate("IDDesDate")));
             extDocBase.setAktDate(dtUtil.toJodaLocalDate(cursor.getDate("AktDate")));
             int srokPrIsp = cursor.getInt("SrokPrIsp");
@@ -60,8 +62,21 @@ public class ExecutiveDocumentBaseFacadeImpl implements IExecutiveDocumentBaseFa
 
             extDocBase.setDebtorEstate(cursor.getString("DebtorEstate"));
             extDocBase.setOrganOKOGU(cursor.getString("OrganOKOGU"));
-            extDocBase.setOrganCode(cursor.getString("ogai_kod_canonical"));
-            extDocBase.setOrgan(cursor.getString("Organ"));
+            switch(config.getPROJECT_STAGE()){
+                case PRODUCTION:
+                    extDocBase.setOrganCode(cursor.getString("ogai_kod_canonical"));
+                    extDocBase.setOrgan(cursor.getString("Organ"));
+                    extDocBase.setClaimerName(cursor.getString("ClaimerName"));
+                    extDocBase.setDeloPlace(cursor.getString("DeloPlace"));
+                    break;
+                default:
+                    extDocBase.setOrganCode("1145000");
+                    extDocBase.setOrgan("УГИБДД (МОСКВА Г.)");
+                    extDocBase.setClaimerName("УГИБДД (МОСКВА Г.)");
+                    extDocBase.setDeloPlace("УГИБДД (МОСКВА Г.)");
+                    break;
+            }
+
             extDocBase.setOrganAdr(cursor.getString("OrganAdr"));
             extDocBase.setOrganSignCodePost(cursor.getBigDecimal("OrganSignCodePost"));
             extDocBase.setOrganSign(cursor.getString("OrganSign"));
@@ -71,7 +86,6 @@ public class ExecutiveDocumentBaseFacadeImpl implements IExecutiveDocumentBaseFa
             extDocBase.setContext(cursor.getString("Context"));
             extDocBase.setIDSum(cursor.getBigDecimal("RekvSum"));
             extDocBase.setIDSumCurrency("643");
-            extDocBase.setClaimerName(cursor.getString("ClaimerName"));
             extDocBase.setClaimerINN(cursor.getString("ClaimerINN"));
             extDocBase.setClaimerKPP(cursor.getString("ClaimerKPP"));
             extDocBase.setClaimerOGRN("1046102000570");

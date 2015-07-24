@@ -9,7 +9,7 @@ public class ApplicationConfigTest {
 
     @Test
     public void testApplicationConfig(){
-        System.out.println(new ApplicationConfig().PROJECT_STAGE);
+        System.out.println(new ApplicationConfig().getPROJECT_STAGE());
     }
 
 }

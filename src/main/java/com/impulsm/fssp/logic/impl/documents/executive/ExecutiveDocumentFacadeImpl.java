@@ -6,6 +6,7 @@ import biz.red_soft.schemas.fssp.common._2011._0.FioType;
 import biz.red_soft.schemas.fssp.common._2011._0.PaymentProperties;
 import biz.red_soft.schemas.fssp.common._2011._0.TransportDataType;
 import com.impulsm.database.datasource.IDataSource;
+import com.impulsm.fssp.config.ApplicationConfig;
 import com.impulsm.fssp.logic.api.documents.executive.IExecutiveDocumentBaseFacade;
 import com.impulsm.fssp.logic.api.documents.executive.IExecutiveDocumentFacade;
 import com.impulsm.fssp.models.documents.extdoc.ExtDocCursor;
@@ -47,6 +48,8 @@ public class ExecutiveDocumentFacadeImpl implements IExecutiveDocumentFacade {
     IFSSPSignatureUtil signatureUtil;
     @Inject
     IFsspUtils fsspUtils;
+    @Inject
+    ApplicationConfig config;
 
     @Override
     public ExtendedExtDoc getNextExecutiveDocumentFromCursor(ExtDocCursor cursor) throws Exception {
@@ -114,7 +117,15 @@ public class ExecutiveDocumentFacadeImpl implements IExecutiveDocumentFacade {
         //OrganCode
         edoc.setOrganCode("22");//cursor.getBigDecimal("OrganCode").toString());
         //Organ
-        edoc.setOrgan(cursor.getString("Organ"));
+        switch(config.getPROJECT_STAGE()){
+            case PRODUCTION:
+                edoc.setOrgan(cursor.getString("Organ"));
+                break;
+            default:
+                edoc.setOrgan("1145000");
+                break;
+        }
+
         //OrganAdr
         edoc.setOrganAdr(cursor.getString("OrganAdr"));
         //OrganSign
@@ -130,7 +141,14 @@ public class ExecutiveDocumentFacadeImpl implements IExecutiveDocumentFacade {
         //ClaimerType
         edoc.setClaimerType("22");//Так сказали в ФССП
         //ClaimerName
-        edoc.setClaimerName(cursor.getString("ClaimerName"));
+        switch(config.getPROJECT_STAGE()){
+            case PRODUCTION:
+                edoc.setClaimerName(cursor.getString("ClaimerName"));
+                break;
+            default:
+                edoc.setOrgan("УГИБДД (МОСКВА Г.)");
+                break;
+        }
         //ClaimerAdr
         edoc.setClaimerAdr(cursor.getString("ClaimerAdr"));
         //DebtorType
