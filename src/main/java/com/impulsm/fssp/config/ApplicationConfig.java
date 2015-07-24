@@ -3,6 +3,7 @@ package com.impulsm.fssp.config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.enterprise.context.ApplicationScoped;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -10,10 +11,11 @@ import java.util.Properties;
 /**
  * Created by vinichenkosa on 08/07/15.
  */
+@ApplicationScoped
 public class ApplicationConfig {
 
-    public final ProjectStage PROJECT_STAGE;
-    private final static Logger logger = LoggerFactory.getLogger(ApplicationConfig.class);
+    private final ProjectStage PROJECT_STAGE;
+    private final Logger logger = LoggerFactory.getLogger(ApplicationConfig.class);
 
     public ApplicationConfig() {
         String projectStage = null;
@@ -27,4 +29,7 @@ public class ApplicationConfig {
         PROJECT_STAGE = ProjectStage.valueOf(projectStage);
     }
 
+    public ProjectStage getPROJECT_STAGE() {
+        return PROJECT_STAGE;
+    }
 }
