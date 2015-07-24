@@ -23,6 +23,7 @@ import java.sql.SQLException;
  */
 public class ExecutiveDocumentBaseFacadeImpl implements IExecutiveDocumentBaseFacade {
 
+    private final Logger logger = LoggerFactory.getLogger(getClass());
     @Inject
     private DateTimeUtil dtUtil;
     @Inject
@@ -135,33 +136,32 @@ public class ExecutiveDocumentBaseFacadeImpl implements IExecutiveDocumentBaseFa
             npaAct.setNpaCaption("КоАП РФ");
             npaAct.setNPAType("1");
 
-            NpaActType.NpaArticleParts npaArticles = new NpaActType.NpaArticleParts();
-            NpaArticleType articleType = new NpaArticleType();
-            articleType.setNpaArticle(stotv.getArticle());
+            if (StringUtils.isBlank(stotv.getArticle())) {
+                NpaActType.NpaArticleParts npaArticles = new NpaActType.NpaArticleParts();
+                NpaArticleType articleType = new NpaArticleType();
+                articleType.setNpaArticle(stotv.getArticle());
 
-            NpaArticleType.NpaParts npaParts = new NpaArticleType.NpaParts();
-            NpaPartType npaPart = new NpaPartType();
-            npaPart.setNpaPart(stotv.getPart());
+                if (StringUtils.isBlank(stotv.getPart())) {
+                    NpaArticleType.NpaParts npaParts = new NpaArticleType.NpaParts();
+                    NpaPartType npaPart = new NpaPartType();
+                    npaPart.setNpaPart(stotv.getPart());
 
-            NpaPartType.NpaPoints npaPoints = new NpaPartType.NpaPoints();
-            NpaPointType npaPoint = new NpaPointType();
-            npaPoint.setNpaPoint(stotv.getPoint());
+                    if (StringUtils.isBlank(stotv.getPoint())) {
+                        NpaPartType.NpaPoints npaPoints = new NpaPartType.NpaPoints();
+                        NpaPointType npaPoint = new NpaPointType();
+                        npaPoint.setNpaPoint(stotv.getPoint());
+                        npaPoints.setNpaPoint(npaPoint);
+                        npaPart.getNpaPoints().add(npaPoints);
+                    }
 
-//            NpaPointType.NpaSubpoints npaSubpoints = new NpaPointType.NpaSubpoints();
-//            NpaSubpointType npaSubpoint = new NpaSubpointType();
-//            npaSubpoint.setNpaSubpoint("подпункт");
-//            npaSubpoints.setNpaSubpoint(npaSubpoint);
-//            npaPoint.getNpaSubpoints().add(npaSubpoints)
 
-            npaPoints.setNpaPoint(npaPoint);
-            npaPart.getNpaPoints().add(npaPoints);
+                    npaParts.setNpaPart(npaPart);
+                    articleType.getNpaParts().add(npaParts);
+                }
 
-            npaParts.setNpaPart(npaPart);
-            articleType.getNpaParts().add(npaParts);
-
-            npaArticles.setNpaArticle(articleType);
-
-            npaAct.getNpaArticleParts().add(npaArticles);
+                npaArticles.setNpaArticle(articleType);
+                npaAct.getNpaArticleParts().add(npaArticles);
+            }
             npaActs.setNpaAct(npaAct);
             extDocBase.getNpaActs().add(npaActs);
             extDocBase.getDetIdPaymentPropertiesId().add(createPaymentProperties(cursor));
@@ -225,5 +225,4 @@ public class ExecutiveDocumentBaseFacadeImpl implements IExecutiveDocumentBaseFa
         return document;
 
     }
-    private final Logger logger = LoggerFactory.getLogger(getClass());
 }
