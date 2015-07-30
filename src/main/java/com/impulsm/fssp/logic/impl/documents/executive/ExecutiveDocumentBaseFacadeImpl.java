@@ -150,17 +150,17 @@ public class ExecutiveDocumentBaseFacadeImpl implements IExecutiveDocumentBaseFa
             npaAct.setNpaCaption("КоАП РФ");
             npaAct.setNPAType("1");
 
-            if (StringUtils.isBlank(stotv.getArticle())) {
+            if (!StringUtils.isBlank(stotv.getArticle())) {
                 NpaActType.NpaArticleParts npaArticles = new NpaActType.NpaArticleParts();
                 NpaArticleType articleType = new NpaArticleType();
                 articleType.setNpaArticle(stotv.getArticle());
 
-                if (StringUtils.isBlank(stotv.getPart())) {
+                if (!StringUtils.isBlank(stotv.getPart())) {
                     NpaArticleType.NpaParts npaParts = new NpaArticleType.NpaParts();
                     NpaPartType npaPart = new NpaPartType();
                     npaPart.setNpaPart(stotv.getPart());
 
-                    if (StringUtils.isBlank(stotv.getPoint())) {
+                    if (!StringUtils.isBlank(stotv.getPoint())) {
                         NpaPartType.NpaPoints npaPoints = new NpaPartType.NpaPoints();
                         NpaPointType npaPoint = new NpaPointType();
                         npaPoint.setNpaPoint(stotv.getPoint());

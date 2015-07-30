@@ -146,7 +146,7 @@ public class ExecutiveDocumentFacadeImpl implements IExecutiveDocumentFacade {
                 edoc.setClaimerName(cursor.getString("ClaimerName"));
                 break;
             default:
-                edoc.setOrgan("УГИБДД (МОСКВА Г.)");
+                edoc.setClaimerName("УГИБДД (МОСКВА Г.)");
                 break;
         }
         //ClaimerAdr
